@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="main-bg more-tag" wx:if="{{order.express_list && order.express_list.length > 1}}">多包裹订单</view>
+  <view class="contact">
+    <view class="flex-row">
+      <image mode="aspectFit" class="addressImg" src="../../images/order-address.png"></image>
+      <view>收货地址</view>    
+    </view>
+    <view class="contact-main">
+      <view class="people">
+        <text>{{ order.contact_user }}</text>
+        <text>{{ order.phone }}</text>
+      </view>
+      <view class="address">
+        {{order.province}} {{order.city}} {{order.district}} {{order.detail}}
+      </view>
+    </view>
+  </view>
+  <view style="padding: 20rpx 0 20rpx 80rpx;border-bottom: 2rpx solid #EFEEF4;">
+    <view>订单编号：{{order.order_number}}</view>
+    <view class="express-list" wx:if="{{order.express_list && order.express_list.length > 1}}">
+      <view wx:for="{{order.express_list}}" bindtap="selExpress" data-id="{{item.id}}" data-index="{{index}}" class="item-express {{selIndex === index ? 'hightExpress' : ''}}">{{index+1}}</view>
+    </view>
+  </view>
+  <block wx:if="{{ express.data.length }}">
+    <view class="express-row">
+      <view>{{ express.company }} {{ express.nu }}</view>
+      <view class="express-link" style="color: #07c160;">物流追踪</view>
+    </view>
+    <van-steps steps="{{ express.data }}" active="0" direction="vertical" />
+  </block>
+  <view wx:else class="no-data">暂无数据</view>
+
+</view>

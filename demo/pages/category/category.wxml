@@ -1,0 +1,63 @@
+<!--classify.wxml-->
+<import src="../../utils/template/common.wxml" />
+
+<view class="container">
+  <!-- <view class="headerSearch"> 
+    <icon class="search-icon" type="search" size="16" color="black"></icon>
+    <input type="text" bindfocus="onSearch"  placeholder-class="placeholder" placeholder="请输入你想寻找的商品" />
+    <image src="../../images/search.png"></image>
+  </view> -->
+  <view class="fixed-top">
+    <template is="scroll-x-category" data="{{categoryData,lightIndex}}" />
+  </view>
+  <view class="Recommend" wx:if="{{productList.length }}">
+    <block wx:for="{{ productList }}" wx:key="id">
+      <view class="RecommendItem" bindtap="openPage" data-url="../details/details?id={{item.id}}" data-open-type="" data-id="{{ item.id }}">
+        <image class="RecommendImg" src="{{ item.cover }}" mode="aspectFit"></image>
+        <view class="product-name">{{item.name}}</view>
+        <view class="flex-row" style="align-items:flex-end;" wx:if="{{judgeAlliances}}">
+          <view class="flex-cell tariff" wx:if="{{item.suggested_price}}">
+            <text class="main-color value">¥{{item.suggested_price}}</text>
+            <text class="laber">零售单价</text>
+          </view>
+          <view class="flex-cell tariff" wx:if="{{true}}">
+            <text class="main-color value">¥{{0}}</text>
+            <text class="laber">盟友单价</text>
+          </view>
+          <view class="flex-cell tariff" wx:if="{{ item.distribution_price}}">
+            <text class="main-color value">¥{{item.distribution_price}}</text>
+            <text class="laber">分销价</text>
+          </view>
+          <block wx:if="{{item.settlementProportions}}" wx:for="{{item.settlementProportions}}" wx:for-item="pItem" wx:key="id">
+            <view class="flex-cell tariff" wx:if="{{pItem.type==='ALLIANCE' && pItem.proportion && pItem.proportion.value > 0}}">
+              <text class="main-color value" wx:if="{{pItem.proportion.percentage}}">{{pItem.proportion.value}}%</text>
+              <text class="main-color value" wx:elif="{{pItem.proportion.fixedvalue}}">{{pItem.proportion.value}}</text>
+              <text class="laber">团队奖励</text>
+            </view>
+          </block>
+          <block wx:if="{{item.settlementProportions}}" wx:for="{{item.settlementProportions}}" wx:for-item="pItem" wx:key="id">
+            <view class="flex-cell tariff" wx:if="{{pItem.type==='STOCKHOLDER' && pItem.proportion && pItem.proportion.value > 0}}">
+              <text class="main-color value" wx:if="{{pItem.proportion.percentage}}">{{pItem.proportion.value}}%</text>
+              <text class="main-color value" wx:elif="{{pItem.proportion.fixedvalue}}">{{pItem.proportion.value}}</text>
+              <text class="laber">盟友分红</text>
+            </view>
+          </block>
+        </view>
+        <view class="flex-row foot-price">
+          <view style="line-height:1em;" wx:if="{{judgeAlliances}}">
+            <text style="font-size: 20rpx; color:#333;">盟友价：</text>
+            <text class="main-color-2" style="font-size:20rpx;margin-right:6rpx;">¥</text>
+            <text class="main-color-2 price" style="font-size: 32rpx;">{{item.price}}</text>
+          </view>
+          <view style="line-height:1em;" wx:else>
+            <text style="font-size: 20rpx; color:#333;">价格：</text>
+            <text class="main-color-2" style="font-size:20rpx;margin-right:6rpx;">¥</text>
+            <text class="main-color-2 price" style="font-size: 32rpx;">{{item.suggested_price}}</text>
+          </view>
+          <view class="make-btn">立即购买</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="no-data" wx:else>暂无数据</view>
+</view>

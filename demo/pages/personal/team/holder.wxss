@@ -1,0 +1,43 @@
+/* pages/personal/holder/index.wxss */
+
+.total-bonus {
+  /* display: inline-block; */
+  height: 200rpx;
+  width: 200rpx;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 60rpx auto;
+  border-radius: 50%;
+  /* vertical-align:middle; */
+}
+
+.date-view {
+  justify-content: space-between;
+  margin: 70rpx 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #999;
+}
+.bonus-spread {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.full-num {
+  background: #e79b37;
+  color: #fff;
+  width: 150rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 40rpx;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.spread-num {
+  padding: 5rpx 30rpx;
+  border: 1rpx solid #999;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+}

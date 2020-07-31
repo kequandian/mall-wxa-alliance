@@ -1,0 +1,17 @@
+<!--pages/register/index.wxml-->
+  <image class="register-bg" src="../../images/register_bg.jpg"></image>
+  <button class="default-botton join-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即加入</button>
+  <!-- <view class="join-btn" bindtap="showPopup" data-layer="showUserAuth">立即加入</view> -->
+
+  <van-dialog use-slot
+  title="您还未登录"
+  show="{{ showUserAuth }}"
+  data-layer="showUserAuth"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="hidePopup"
+  bind:getuserinfo="getUserInfo">
+  <view style="padding: 20rpx; text-align: center; color: #666;">
+    需要登录才能体验完美
+  </view>
+</van-dialog>

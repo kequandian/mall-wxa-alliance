@@ -1,0 +1,57 @@
+<!--setAddress.wxml-->
+
+<view class="container">
+	<form class="address-form" bindsubmit="formSubmit">
+
+		<view class="form-line">
+			<text>收货人</text>
+			<input type="text" name="contact_user" bindblur="bindInputBlur" data-name="contact_user" value="{{ address.contact_user }}" placeholder="请输入收货人姓名"/>
+		</view>
+		<view class="form-line">
+			<text>手机号码</text>
+			<input type="number" name="phone" bindblur="bindInputBlur" maxlength="11" data-name="phone" value="{{ address.phone }}" placeholder="请输入手机号码"/>
+		</view>
+		<view class="form-line">
+			<text>设置默认地址</text>
+			<switch bindchange="setDefault" name="is_default" checked="{{ address.is_default==1?true:false }}" style="zoom: 0.8;" />
+		</view>
+		<view class="form-line">
+			<text>所在地区</text>
+      <picker mode="region" bindchange="bindRegionChange" >
+        <view class="picker" wx:if="{{address.province}}">
+          {{ address.province}} {{ address.city }} {{ address.district }}
+        </view>
+        <view class="picker" wx:else>请选择地区</view>
+      </picker>
+			<!-- <text type="text" class="area" name="area" bindtap="popupSetArea" placeholder="请选择省市区">{{ address.province}} {{ address.city }} {{ address.district }}</text> -->
+		</view>
+		
+		<view class="form-line">
+			<textarea name="detail" cols="1" bindblur="bindInputBlur" data-name="detail" value="{{ address.detail }}" placeholder="请输入详细地址" style="width:100%;"></textarea>
+		</view>
+		<button class="main-bg save" formType="submit" >保存</button>
+		<button class="save" bindtap="delAddress" data-id="{{ address.id }}" data-index="{{index}}" type="default">删除</button>
+	</form>
+</view>
+<view class="popup-view">
+	<view class="popup-animation" animation="{{ animationData }}">
+		<view class="popup-opacity"></view>
+		<view class="popup-container">
+			<view class="popup-header">
+				<text class="confirm" catchtap="confirm">确定</text>
+				<text class="cancel" catchtap="cancel">取消</text>
+			</view>
+			<picker-view bindchange="bindChange" indicator-style="height:80rpx;line-height:80rpx;" style="width: 100%; height: 400rpx;">
+				<picker-view-column >
+					<view wx:for="{{ province }}" wx:key="this" style="height:80rpx;line-height: 80rpx;text-align:center;">{{ item }}</view>
+				</picker-view-column>
+				<picker-view-column >
+					<view wx:for="{{ city }}" wx:key="this" style="line-height: 80rpx;text-align:center;">{{ item }}</view>
+				</picker-view-column>
+				<picker-view-column >
+					<view wx:for="{{ district }}" wx:key="this" style="line-height: 80rpx;text-align:center;">{{ item }}</view>
+				</picker-view-column>
+			</picker-view>
+		</view>
+	</view>
+</view>

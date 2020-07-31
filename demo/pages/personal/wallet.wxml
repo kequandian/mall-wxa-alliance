@@ -1,0 +1,22 @@
+<view class="container">
+  <view style="padding: 20rpx 20rpx 20rpx 40rpx;color:#888;">修改支付密码前需要验证您的身份信息</view>
+  <view class="flex-row">
+    <!-- <view class="laber">手机号:</view> -->
+    <input type="number" maxlength="11" placeholder="请输入手机号" placeholder-style="color:#888;" value="{{ formData.alliancePhone }}" disabled ></input>
+    <view class="main-color-2" disabled="{{ checkBtnDis }}" style="padding-right: 20rpx;opacity: {{checkBtnDis?0.5:1}}" bindtap="getPhoneCode">{{checkBtnText}}</view>
+  </view>
+  <view class="flex-row">
+    <!-- <view class="laber">验证码:</view> -->
+    <input type="number" maxlength="6" placeholder="请输入验证码" value="{{ formData.invitationCode }}" data-layer='phoneCode' bindinput="getInput" ></input>
+  </view>
+    <view class="flex-row">
+    <input type="number" name="password1" password maxlength="6" placeholder="输入新密码" value="{{ formData.password1 }}" data-layer='password1' bindinput="getInput" ></input>
+  </view>
+    <view class="flex-row">
+    <input type="number" name="password2" password maxlength="6" placeholder="确认新密码" value="{{ formData.password2 }}" data-layer='password2' bindinput="getInput" ></input>
+  </view>
+  <view style="padding: 20rpx 20rpx 20rpx 40rpx;color:#888;">密码由6位数字组成</view>
+  <view class="foot-row">
+    <view class="main-bg add-btn" bindtap="onSubmit">确认</view>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+/* pages/personal/amount/recharge/index.wxss */
+page {
+  background: #eff0f1;
+}
+.container {
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  padding: 20rpx;
+}
+.btn-view {
+  text-align: center;
+  color: #fff;
+  justify-content: flex-end;
+}
+.btn-view .btn {
+  width: 90%;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin: 30rpx auto;
+}

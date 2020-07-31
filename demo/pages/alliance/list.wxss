@@ -1,0 +1,49 @@
+/* pages/follow/list.wxss */
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 200rpx;
+  background: #fff;
+  z-index: 99;
+}
+
+.search-row {
+  /* border-bottom: 1rpx solid #ccc; */
+  padding: 20rpx;
+  
+}
+.search-row input {
+  background: #e9eeee;
+  border-radius: 40rpx;
+  padding: 10rpx;
+  padding-left: 100rpx;
+  position: relative;
+}
+.search-icon {
+  height: 40rpx;
+  width: 40rpx;
+  position: absolute;
+  top: 50%;
+  left: 20rpx;
+  transform: translate(0, -50%);
+  border-right: 1rpx solid #666;
+  padding-right: 15rpx;
+  
+}
+
+.list {
+  color: #666;
+}
+.list_item {
+  border-top: 1rpx solid #ccc;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+.avatar {
+  height: 80rpx;
+  width: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}

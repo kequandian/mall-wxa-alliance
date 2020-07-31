@@ -1,0 +1,31 @@
+<import src="../../utils/template/common.wxml" />
+
+<view class="container padding-foot">
+  <form bindsubmit="subForm">
+    <view class="form-products">
+      <view wx:for="{{order.order_items}}" class="product-item">
+        <view class="item-head">
+          <image class="product-cover" src="{{item.cover}}"></image>
+          <text class="head-link">商品评价：</text>
+          <template is="star-evaluate" data="{{mark:products[index].mark,productIndex:index}}" />
+        </view>
+        <view>
+          <textarea name="product-{{index}}" id="{{index}}" bindinput="contentText" placeholder="拍照晒单评价有机会获得积分哦" placeholder-style="font-size: 30rpx;"></textarea>
+          <view class="upload-imgs">
+            <block wx:for="{{products[index].uploadImg}}" wx:for-item="upItem" wx:for-index="upIndex">
+              <image bindtap="delImg" data-up-index="{{upIndex}}" data-product-index="{{index}}" class="upload-item" src="{{upItem}}"></image>
+            </block>
+            <image class="upload-item" bindtap="chooseImage" data-product-index="{{index}}" src="../../images/add_img.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="foot-view main-bg">
+      <button class="foot-btn main-bg" form-type="submit">提交</button>
+    </view> -->
+    <view class="foot-row">
+      <button class="default-botton main-bg btn" form-type="submit">提交</button>
+      <!-- <view class="main-bg add-btn" bindtap="openPage" data-url="./add">添加朋友</view> -->
+    </view>
+  </form>
+</view>

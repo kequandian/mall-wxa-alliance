@@ -1,0 +1,42 @@
+<template name="scroll-x-category">
+	<scroll-view scroll-x class="scroll-x-category">
+		<view wx:for="{{categoryData}}" wx:key="id" class="item-category {{index==lightIndex?'category-light':''}}" bindtap="selCategory" data-id="{{item.id}}" data-index="{{index}}">
+			{{item.name}}
+		</view>
+	</scroll-view>
+</template>
+
+<template name="login">
+	<view class="wx-popup" wx:if="{{loginPopup}}">
+		<view class="popup-container login">
+	    <view class="login-close-popup" bindtap="closeLoginPopup"></view>
+			<view class="login-popup-head">
+	        </view>
+	        <view class='float_tab'>
+	            <view class='info1'><text>微信授权</text></view>
+	            <view class='info2'><text>小程序将获取以下权限：</text></view>
+	            <view class='info3'><text>(如未授权，可能无法正常使用该小程序)</text></view>
+	            <view class='info4'><text>获取您的公开信息（昵称、头像等）</text></view>
+	        </view>
+	        <view class='float_button'>
+	            <button size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+	                确定授权
+	            </button>
+	        </view>
+		</view>
+	</view>
+</template>
+
+<!-- 五星评价 -->
+<template name="star-evaluate">
+	<view class="star-view">
+		<view wx:for="{{[1,2,3,4,5]}}">
+			<block wx:if="{{ index < mark }}" >
+				<image bindtap="selStar" data-index="{{item}}" data-product-index="{{productIndex}}" class="star-img" src="../../images/star24_on@2x.png"></image>
+			</block>
+			<block wx:else >
+				<image bindtap="selStar" data-index="{{item}}" data-product-index="{{productIndex}}" class="star-img" src="../../images/star24_off@2x.png"></image>
+			</block>
+		</view>
+	</view>
+</template>

@@ -1,0 +1,24 @@
+<view style="color: #333;">
+  <van-cell-group >
+    <van-field value="{{ friend.name }}" label="姓名" placeholder="请输入姓名" bindblur="getInputValue" data-flag="name" error-message="{{ rules.name }}" />
+    <van-field type="number" maxlength="11" value="{{ friend.contactPhone }}" label="手机号码" placeholder="请输入手机号码" bindblur="getInputValue" data-flag="contactPhone" error-message="{{ rules.contactPhone }}" />
+    <van-field value="{{ friend.nick }}" label="昵称" placeholder="请输入用户名" bindblur="getInputValue" data-flag="nick" error-message="{{ rules.nick }}" />
+    <view class="region">
+      <view class="">地区</view>
+      <picker mode="region" bindchange="changeRegion" >
+        <view class="picker-value" style="text-align: right;" wx:if="{{ friend.pcdProvince }}">
+          {{ friend.pcdProvince }}{{ friend.pcdCity }}{{ friend.pcdDistinct }}
+          <!-- {{region[0]}}，{{region[1]}}，{{region[2]}} -->
+        </view>
+        <view class="picker-value" style="color: #999; text-align: right;" wx:else>
+          请选择地区
+        </view>
+      </picker>
+    </view>
+    <view wx:if="{{rules.region}}" style="color: #ee0a24; text-align: right; font-size: 12px;padding-right: 15px;">{{rules.region}}</view>
+    <van-field value="{{ friend.address }}" label="详细地址" placeholder="请输入详细地址" bindblur="getInputValue" data-flag="address" error-message="{{ rules.address }}" />
+  </van-cell-group>
+  <button class="main-bg add-btn" bindtap="submit">保存</button>
+  <!-- <button class="main-bg add-btn" bindtap="getData">快速填写数据</button> -->
+  <button class="add-btn" bindtap="del" wx:if="{{friendId}}">删除</button>
+</view>

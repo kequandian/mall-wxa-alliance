@@ -1,0 +1,40 @@
+/* pages/personal/team/profile.wxss */
+page {
+  background: #f0f0f0;
+  color: #666;
+}
+.form {
+  margin-top: 20rpx;
+  height: 100%;
+  width: 100%;
+}
+
+.flex-row {
+  background: #fff;
+  margin: 10rpx 20rpx;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+}
+.form .flex-row:first-child {
+  margin-top: 30rpx;
+}
+.flex-row input {
+  flex: 1;
+  text-indent: 10rpx;
+}
+.flex-row picker {
+  flex: 1;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  margin: 30rpx 20rpx;
+  padding: 0 20rpx;
+}
+
+.sub-btn {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20rpx;
+}

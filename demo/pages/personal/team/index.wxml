@@ -1,0 +1,28 @@
+<!--pages/personal/team/index.wxml-->
+<view wx:if="{{ teams.length }}">
+  <view class="flex-row team-num">
+    <image src="../../../images/ream_Recommend.png"></image>
+    <view>推荐盟友 <text>{{ teams.length }}人</text></view>
+  </view>
+  <view>
+    <view wx:for="{{ teams }}" wx:key="{{ item.id }}" class="flex-row item-team" bindtap="openPage" data-url="./profile?id={{item.id}}">
+      <view class="flex-row">
+        <image src="../../../images/default_avatar.png"></image>
+        <!-- <image src="{{ item.avatar }}"></image> -->
+        <view class="flex-cell">
+          <view class="flex-row">
+            <view>{{ item.allianceName }}</view>
+            <view class="main-color-2" wx:if="{{ item.allianceType==1 }}">【分红盟友】</view>
+            <view class="main-color-2" wx:elif="{{ item.allianceType==2 }}">【盟友】</view>
+          </view>
+          <view style="font-size: 24rpx;">加入时间：{{ item.creationTime ? item.creationTime : "" }}</view>
+        </view>
+      </view>
+      <view class="right-arrow" style="margin-right:20rpx;"></view>
+    </view>
+    <view style="text-align:center; font-size: 24rpx;padding-top: 20rpx;color:#999;" wx:if="{{ teams.length }}">已加载全部</view>
+
+  </view>
+
+</view>
+<view class="no-data" wx:else>暂无数据</view>

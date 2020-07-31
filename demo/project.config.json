@@ -1,0 +1,164 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"coverView": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.3",
+	"appid": "wxa5185f8151125f5b",
+	"projectname": "kqd-%E5%95%86%E5%9F%8E",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "朋友",
+					"pathName": "pages/friend/friend",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加朋友",
+					"pathName": "pages/friend/add",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "logo",
+					"pathName": "pages/alliance/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/personal/team/profile",
+					"pathName": "pages/personal/team/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/alliance/judge",
+					"pathName": "pages/alliance/judge",
+					"query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "物流详情",
+					"pathName": "pages/order/express",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/register/phone",
+					"pathName": "pages/register/phone",
+					"query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
+					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "不是盟友提示页面",
+					"pathName": "pages/register/applied",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/personal/amount/cash-out/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品",
+					"pathName": "pages/category/category",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "重置密码",
+					"pathName": "pages/personal/wallet",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "绑定",
+					"pathName": "pages/register/phone",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "邀请码",
+					"pathName": "pages/alliance/index",
+					"query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
+					"scene": 1011
+				},
+				{
+					"id": 13,
+					"name": "审核中",
+					"pathName": "pages/register/applied",
+					"query": "origin=invite",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "更换手机",
+					"pathName": "pages/personal/updatePhone",
+					"query": "alliancePhone=13710750302",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "物流",
+					"pathName": "pages/order/express",
+					"query": "order_number=19121415101962723",
+					"scene": null
+				}
+			]
+		}
+	}
+}

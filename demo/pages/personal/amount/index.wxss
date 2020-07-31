@@ -1,0 +1,26 @@
+/* pages/personal/amount/index.wxss */
+page {
+  background: #eff0f1;
+}
+.container {
+}
+.head {
+  text-align: center;
+  height: 350rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn-view {
+  text-align: center;
+  color: #fff;
+  justify-content: center;
+}
+.btn-view .btn {
+  width: 300rpx;
+  text-align: center;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  margin: 20rpx auto;
+}

@@ -1,0 +1,248 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F6F7FB;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.prompt {
+    background-color: #ff5733;
+    color: #FFF;
+    font-size: 24rpx;
+    padding: 10rpx;
+}
+
+.item-good {
+    display: flex;
+    color: #505050;
+    font-size: 30rpx;
+    align-items: center;
+    padding: 0 30rpx;
+    background-color: #FFF;
+}
+.good-cover {
+    width: 160rpx;
+    height: 160rpx;
+    margin-right: 30rpx;
+}
+.good-right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 0 30rpx;
+}
+.good-name {
+	color: #333333;
+}
+
+.besides-row {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    color: #333333;
+    padding: 20rpx 30rpx ;
+    border-bottom: 2rpx solid #F6F7FB;
+    background-color: #FFF;
+}
+.besides-row label {
+    width: 160rpx;
+}
+.besides-row input {
+    width: 1;
+}
+.prompt-price {
+    background-color: #F6F7FB;
+    color: #a6a6a6;
+}
+
+.update-link{
+    font-size: 30rpx;
+    padding: 20rpx 30rpx;
+}
+.update-body {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.item-update {
+    margin:20rpx;
+    text-align: center;
+    width: 136rpx;
+    height: 136rpx;
+    position: relative;
+}
+.icon-size {
+    font-size: 130rpx;
+    color: #a6a6a6;
+    padding: 0!important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #FFF;
+}
+.item-update image{
+    width: 136rpx;
+    height: 136rpx;
+}
+.close {
+    background-color: #999999;
+    color: #FFF;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 28rpx;
+    display: block;
+}
+
+.sub-btn {
+    color: #FFF;
+    border-radius: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.apply-status {
+    display: flex;
+    background-color: #FFF;
+    color: #505050;
+    font-size: 30rpx;
+    padding: 30rpx;
+}
+.status-success {
+    color: #12d72e;
+}
+.status-error {
+    color: #ff5733;
+}
+
+
+/*----------showPopup弹窗样式开始-------*/
+
+.opacity-view {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.showPopup {
+  position: fixed;
+  top: 30%;
+  left: 10%;
+  z-index: 1001;
+  width: 80%;
+  /*height: 50%;*/
+  background: #FFF;
+  border-radius: 20rpx;
+  overflow: scroll;
+  font-family: '宋体';
+  /*-webkit-overflow-scrolling: touch;*/
+  
+}
+
+.popup-head {
+    position: relative;
+    /*position: fixed;
+    top: 10%;
+    left: 10%;*/
+    z-index: 1001;
+    /*width: 80%;*/
+    height: 80rpx;
+    line-height: 80rpx;
+    /*background: #F8F8F8;*/
+    border-radius: 20rpx 20rpx 0 0;
+    text-align: center;
+    font-size: 36rpx;
+}
+.close-icon {
+    position: absolute;
+    right: 20rpx;
+    top: 0;
+}
+.popup-img image {
+  width: 70%;
+  border-radius: 20rpx;
+  margin: 100rpx 0 10rpx 0;
+}
+
+.popup-name {
+  padding: 10rpx;
+}
+
+.popup-describe {
+  text-align: left;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+}
+.describe-link {
+  color: #888;
+  padding-bottom: 20rpx;
+}
+
+.describe-value {
+  font-size: 30rpx;
+  text-indent: 2em;
+}
+
+.popup-row {
+  display: flex;
+  /*justify-content: space-between;*/
+  padding: 20rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+  font-size: 32rpx;
+}
+
+/*.showPopup .popup-row:last-child {
+  border: none;
+}*/
+
+.popup-value {
+  color: #DB4236;
+}
+
+.closePopup {
+  width: 70rpx; 
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 60rpx;
+  overflow: hidden; 
+  position: fixed; 
+  top: 85%; 
+  left: 48%; 
+  z-index: 1001;
+  color: #FFF;
+  background: rgba(200,200,200,0.5); 
+  /*margin: 0 10vw 0 10vw; */
+
+  border-radius: 50%; 
+  text-align: center;
+}
+.popup-btn {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    color: #FFF;
+    padding: 20rpx 0;
+    border-radius: 20rpx;
+}
+/*----------showPopup弹窗样式结束-------*/
+.service-popup {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}

@@ -1,0 +1,37 @@
+<!--index.wxml-->
+
+<view class="container" wx:if="{{step === 1}}">
+  <view class="step-row">
+    <view class="main-bg item-step">1.验证手机</view>
+    <view class="arrow"></view>
+    <view class="arrow2"></view>
+    <view class="item-step" style="background: #000;">2.绑定新手机</view>
+  </view>
+  <view class="flex-row">
+    <input type="number" maxlength="11" placeholder="请输入手机号" value="{{ alliance[step-1].alliancePhone }}" data-layer='alliancePhone' disabled></input>
+  </view>
+  <view class="flex-row">
+    <!-- <view class="laber">验证码:</view> -->
+    <input type="number" maxlength="6" placeholder="请输入验证码" value="{{ alliance[step-1].phoneCode }}" data-layer='phoneCode' data-step='1' bindinput="getInput"></input>
+    <button class="default-botton code-btn" disabled="{{ checkBtnDis }}" style="opacity: {{checkBtnDis?0.5:1}}" bindtap="getPhoneCode" data-step='1'>{{checkBtnText}}</button>
+  </view>
+  <view style="margin-left: 45rpx;color: #999;">遇到问题，请联系客服！</view>
+  <view class="foot-row">
+    <button class="default-botton main-bg sub-btn" hover-class="hoverView" bindtap="onSubmit" data-step='1'>下一步</button>
+  </view>
+</view>
+
+<view class="container" wx:elif="{{step === 2}}">
+  <view class="flex-row">
+    <input type="number" maxlength="11" placeholder="请输入新的手机号" value="{{ alliance[step-1].alliancePhone }}" data-layer='alliancePhone' bindinput="getInput" data-step='2'></input>
+  </view>
+  <view class="flex-row">
+    <!-- <view class="laber">验证码:</view> -->
+    <input type="number" maxlength="6" placeholder="请输入验证码" value="{{ alliance[step-1].phoneCode }}" data-layer='phoneCode' data-step='2' bindinput="getInput"></input>
+    <button class="default-botton code-btn" disabled="{{ checkBtnDis }}" style="opacity: {{checkBtnDis?0.5:1}}" bindtap="getPhoneCode" data-step='2'>{{checkBtnText}}</button>
+  </view>
+  <view class="foot-row">
+    <button class="default-botton main-bg sub-btn" hover-class="hoverView" bindtap="onSubmit" data-step='2' wx:if="{{step==2}}">确认更换</button>
+    <!-- <view class="main-bg add-btn" bindtap="openPage" data-url="./add">添加朋友</view> -->
+  </view>
+</view>

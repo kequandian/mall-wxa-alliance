@@ -1,0 +1,115 @@
+<!--index.wxml-->
+<view wx:if="{{applyData.invitationCode}}">
+  <form class="form">
+    <view class="form-row">
+      <text class="main-color-2" style="width: 20rpx;margin-left: -20rpx;">*</text>
+      <view>姓名：</view>
+      <input name="allianceName" type="text" bindinput="getInput" data-layer="allianceName" value="{{alliance.allianceName}}" placeholder="请输入姓名" />
+    </view>
+    <view class="form-row">
+      <text class="main-color-2" style="width: 20rpx;margin-left: -20rpx;">*</text>
+      <view>电话：</view>
+      <input name="alliancePhone" type="number" bindinput="getInput" data-layer="alliancePhone" value="{{alliance.alliancePhone}}" maxlength="11" placeholder="请输入手机号码" />
+    </view>
+    <view class="form-row">
+      <view>性别：</view>
+      <picker name="allianceSex" bindchange="pickerChange" value="{{alliance.allianceSex}}" range="{{sexArr}}" data-layer="allianceSex">
+        <view class="picker">
+          {{ alliance.allianceSex === 1 ? "男" : (alliance.allianceSex === 0 ? "女" : "请填写性别") }}
+        </view>
+      </picker>
+    </view>
+    <!-- <view class="flex-row">
+      <view>出生日期：</view>
+      <picker name="allianceDob" mode="date" value="{{alliance.allianceDob}}" end="{{nowDate}}" bindchange="pickerChange" data-layer="allianceDob" >
+        <view class="picker">
+          {{ alliance.allianceDob ? alliance.allianceDob : (isSelf ? "请输入出生日期" : "") }}
+        </view>
+      </picker>
+    </view> -->
+    <view class="form-row">
+      <view>年龄：</view>
+      <!-- <view style="padding-left: 10rpx;">{{alliance.age ? alliance.age: (isSelf ? "请输入年龄" : "")}}</view> -->
+      <input name="age" type="number" min="18" bindinput="getInput" data-layer="age" value="{{alliance.age}}" placeholder="请输入年龄" />
+    </view>
+    <view class="form-row">
+      <view>职业：</view>
+      <input name="allianceOccupation" type="text" bindinput="getInput" data-layer="allianceOccupation" value="{{alliance.allianceOccupation}}" placeholder="请输入职业" />
+    </view>
+    <view class="form-row">
+      <view>需求：</view>
+      <input name="allianceBusiness" type="text" bindinput="getInput" data-layer="allianceBusiness" value="{{alliance.allianceBusiness}}" placeholder="请输入需求" />
+    </view>
+    <view class="form-row">
+      <view>爱好：</view>
+      <input name="allianceHobby" type="text" bindinput="getInput" data-layer="allianceHobby" value="{{alliance.allianceHobby}}" placeholder="请输入爱好" />
+    </view>
+    <view class="form-row">
+      <view>地址：</view>
+      <input name="allianceAddress" type="text" bindinput="getInput" data-layer="allianceAddress" value="{{alliance.allianceAddress}}" placeholder="请输入地址" />
+    </view>
+    <view class="code-row">
+      <!-- <view class="laber">验证码:</view> -->
+      <input type="number" maxlength="6" placeholder="请输入验证码" value="{{ applyData.phoneCode }}" data-layer='phoneCode' bindinput="getInput"></input>
+      <button class="default-botton code-btn" disabled="{{ checkBtnDis }}" style="opacity: {{checkBtnDis?0.5:1}}" bindtap="getPhoneCode">{{checkBtnText}}</button>
+    </view>
+    <button class="default-botton main-bg sub-btn" style="margin-top: 50rpx;" open-type="getUserInfo" bindgetuserinfo="getUserInfo">保存</button>
+  </form>
+</view>
+<view class="container" wx:else>
+  <!-- <view class="flex-row" wx:if="{{applyData.invitationCode}}">
+    <input type="text" placeholder="请输入姓名" placeholder-style="color:#666;" value="{{ applyData.allianceName }}" data-layer='allianceName' bindinput="getInput" ></input>
+  </view> -->
+  <view class="flex-row">
+    <!-- <view class="laber">手机号:</view> -->
+    <input type="number" maxlength="11" placeholder="请输入手机号" value="{{ applyData.alliancePhone }}" data-layer='alliancePhone' bindinput="getInput"></input>
+  </view>
+  <view class="flex-row" wx:if="{{!isBind}}">
+    <!-- <view class="laber">验证码:</view> -->
+    <input type="number" maxlength="6" placeholder="请输入验证码" value="{{ applyData.phoneCode }}" data-layer='phoneCode' bindinput="getInput"></input>
+    <button class="default-botton code-btn" disabled="{{ checkBtnDis }}" style="opacity: {{checkBtnDis?0.5:1}}" bindtap="getPhoneCode">{{checkBtnText}}</button>
+  </view>
+
+  <button class="default-botton main-bg sub-btn " hover-class="hoverView" bindtap="onSubmit">我是盟友</button>
+  <!-- <van-cell-group style="margin-top: 40rpx;width: 100vw;">
+    <van-field
+      type="text"
+      label="姓名"
+      data-layer='allianceName'
+      clearable
+      placeholder="请输入姓名"
+      value="{{ applyData.allianceName }}"
+      error-message="{{ rules.allianceName }}"
+      bindblur="getInput"
+    />
+    <van-field
+      type="number"
+      maxlength="11"
+      label="手机号"
+      data-layer='alliancePhone'
+      clearable
+      placeholder="请输入手机号"
+      value="{{ applyData.alliancePhone }}"
+      error-message="{{ rules.alliancePhone }}"
+      bindblur="getInput"
+    />
+    <block wx:if="{{ !isBind }}">
+      <van-field
+        type="number"
+        maxlength="6"
+        center
+        clearable
+        label="短信验证码"
+        placeholder="请输入短信验证码"
+        border="{{ false }}"
+        use-button-slot
+        bindinput="codeInput"
+        bindblur="codeInput"
+      >
+        <van-button slot="button" size="small" type="primary" disabled="{{ checkBtnDis }}" bindclick="getPhoneCode">{{checkBtnText}}</van-button>
+      </van-field>
+    </block>
+    <van-button custom-class="main-bg" color="#d23f3a" size="large" disabled="{{ loginBtnDis }}" bindclick="onSubmit">提交申请</van-button>
+  </van-cell-group> -->
+
+</view>

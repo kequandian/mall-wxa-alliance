@@ -1,0 +1,23 @@
+/* pages/friend/add.wxss */
+.van-field__input {
+  text-align: right!important;
+}
+.van-field__error-message {
+  text-align: right!important;
+}
+.region {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.region picker {
+  flex: 1
+}
+
+.add-btn {
+  width: 90%;
+  margin-top: 40rpx;
+}

@@ -1,0 +1,90 @@
+/* favorite.wxss */
+
+.favoriteList {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.item-favorite {
+	position: relative;
+	width: 100%;
+	border-bottom: 5rpx solid #ccc;
+	height: 200rpx;
+
+}
+
+.favorite-mian {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: white;
+	z-index: 2
+}
+
+.favorite-mian image {
+	width: 150rpx;
+	height: 150rpx;
+	margin: auto 40rpx;
+}
+
+.product-text {
+	display: flex;
+	flex-direction: column;
+	font-size: 32rpx;
+	margin: auto 0;
+	width: 100%;
+
+}
+.price-num {
+	display: flex;
+	flex-direction: row;
+	margin-top: 40rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+}
+.product-text .price {
+	flex: 1;
+	font-size: 34rpx;
+	color: red;
+}
+.stock_balance {
+	flex: 1;
+}
+.favorite-cart {
+	overflow: hidden;
+}
+.favorite-cart image {
+	width: 80rpx;
+	height: 80rpx;
+}
+
+.item-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 120rpx;
+	font-size: 32rpx;
+	height: 100%;
+	border: 0;
+	border-radius: 0;
+	line-height: 100px;
+
+}
+/* width: 60px;
+	font-size: 16px;
+	height: 100%;
+	line-height: 90px;
+	border: 0;
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0; 
+	*/

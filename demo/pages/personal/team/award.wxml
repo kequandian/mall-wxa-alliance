@@ -1,0 +1,99 @@
+<!--pages/personal/team/award.wxml-->
+<view class="container" style="overflow-x: hidden;">
+  <!-- <view class="flex-cell main-bg total-award">
+    <view>
+      <text>¥</text>
+      <text style="font-size: 50rpx;">{{commissionTotal}}</text>
+    </view>
+    <view style="font-size: 24rpx;">本月提成</view>
+  </view> -->
+  <view class="award-top">
+    <view class="flex-cell">
+      <view class="flex-row" style="justify-content:flex-end; align-items:flex-end; font-size:30rpx; margin-right:20rpx;">
+        <!-- <view>{{now_data}}</view> -->
+        <view class="">
+          <picker mode="date" fields="month" value="{{ fetch_date }}" start="" end="{{ end_date }}" bindchange="bindDateChange">
+            <view class="picker flex-row">
+              <view class="">{{ sel_date?sel_date:"请选择日期" }}</view>
+              <van-icon name="bars" size="18px;"  />
+            </view>
+          </picker>
+        </view>
+        <!-- <view>图片</view> -->
+      </view>
+      <view class="flex-row" style="flex:1;margin-top: 15rpx;height: 150rpx;">
+        <view class="flex-cell" style="flex:1; margin:0 18px 0 20px;">
+          <view class="flex-row money-item">
+            <text class="money-label">个人进货额：</text>
+            <text class="money-unit">¥</text>
+            <text class="money-text-size">{{monthAward.orderAmount || 0}}</text>
+            <block wx:if="{{monthAward.conditionOrderAmount > 0}}">
+              <text class="money-label btn-round">离团队奖励还差 ¥{{monthAward.conditionOrderAmount}}</text>
+            </block>
+          </view>
+          <view class="flex-row money-item">
+            <text class="money-label">可结算奖励：</text>
+            <text class="money-unit">¥</text>
+            <text class="money-text-size" style="flex:1;">{{monthAward.settlementCommission || 0}}</text>
+            <block wx:if="{{monthAward.conditionOrderAmount <= 0}}">
+              <text class="money-label btn-round-cash" style="padding: 10rpx 20rpx;"
+              bindtap="openPage"
+              data-url="../amount/cash-out/index">去提现</text>
+            </block>
+          </view>
+          
+        </view>
+
+        <!-- <view style="width:4rpx; height:65%; background-color: #fff;"></view> -->
+
+        <!-- <view class="flex-cell" style="flex:1;margin-left: 8px;">
+          <view class="flex-row money-item">
+            <text class="money-label">已生效提成：</text>
+            <text class="money-unit">¥</text>
+            <text class="money-text-size">{{monthAward.effectiveCommission || 0}}</text>
+          </view>
+          <view class="flex-row money-item">
+            <text class="money-label">未生效提成：</text>
+            <text class="money-unit">¥</text>
+            <text class="money-text-size">{{monthAward.noEffectiveCommission || 0}}</text>
+          </view>
+        </view> -->
+
+      </view>
+    </view>
+    
+    <!-- <view class="flex-row">
+      <text style="margin-right: 10rpx;">¥</text>
+      <text style="font-size: 60rpx;">{{monthAward.commissionBalance || 0}}</text>
+      <text style="font-size: 30rpx;height:1.2">\n本月提成</text>
+    </view> -->
+  </view>
+    
+  <!-- <view class="absolute-date">
+    <picker mode="date" fields="month" value="{{ fetch_date }}" start="" end="{{ end_date }}" bindchange="bindDateChange">
+      <view class="picker flex-row">
+        <view class="main-color-2">{{ fetch_date?fetch_date:"请选择日期" }}</view>
+        <van-icon name="bars" size="18px;"  />
+      </view>
+    </picker>
+  </view> -->
+
+  
+  <view class="award-tips">温馨提示：盟友需当月进货额满2000元，方可获得当月团队奖励，团队奖励在月底结算！</view>
+  
+  <view class="laber">提成明细</view>
+  <view class="award-details">
+    <block wx:if="{{monthAward.commissionOrder.length}}">
+      <view class="item-award" wx:for="{{ monthAward.commissionOrder }}" wx:key="{{ item.id }}">
+        <view>订单编号：{{ item.orderNumber }}</view>
+        <view>团队盟友：{{ item.invitorName }}</view>
+        <view>订单金额：¥{{ item.orderMoney || 0 }}</view>
+        <!-- <view>订单状态：</view> -->
+        <view>订单提成：¥{{ item.commission || 0 }}
+        <text class="main-color-2" style="font-size: 24rpx;" wx:if="{{ item.holder_status==0 }}">（提成未生效）</text></view>
+        <view>订单时间：{{ item.createTime }}</view>
+      </view>
+    </block>
+    <view class="no-data" wx:else>暂无数据</view>
+  </view>
+</view>

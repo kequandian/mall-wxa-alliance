@@ -1,0 +1,21 @@
+<!--pages/register/applied.wxml-->
+<view class="flex-cell" style="height: 100%;" wx:if="{{origin === 'invite'}}">
+  <view class="main-bg invite-message">
+    <view>亲爱的盟友；您好！</view>
+    <view>提交的信息审核中请稍等......</view>
+  </view>
+  <view class="bottom-arrow"></view>
+</view>
+<view class="flex-cell" style="height: 100%;" wx:else>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:if="{{status === 1}}">欢迎你来到十美创享之家， 你目前还不是我们的盟友， 如果你想加入我们一起资源共享， 可通过“碧丽雅”微信公众平台联系我们。</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:elif="{{status === 2}}">请咨询您的邀请人，了解申请进度，确认申请成功后，可尝试重新登录。</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:elif="{{status === 3}}">待绑定</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:elif="{{status === 4}}">支付超时</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:elif="{{status === 5}}">状态错误</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:elif="{{status === 6}}">盟友已支付(待绑定)</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:elif="{{status === 7}}">盟友已注销</view>
+  <view style="color: #666;padding: 30rpx;text-indent: 2em;" wx:else>其他状态</view>
+  <view class="flex-cell" style="flex: 1;justify-content: flex-end;">
+    <view class="main-bg btn" bindtap="openPage" data-url="./index" data-open-type="redirect">确定</view>
+  </view>
+</view>

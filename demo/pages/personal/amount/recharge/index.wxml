@@ -1,0 +1,13 @@
+<!--pages/personal/amount/recharge/index.wxml-->
+<view class="flex-cell container" style="height: 100%;">
+  <view class="flex-cell head">
+    <view style="padding: 20rpx 0;color:#666;">充值金额</view>
+    <view class="flex-row" style="font-size: 80rpx;">
+      <view style="color: #666;padding-right: 10rpx;">¥</view>
+      <input type="number" class="main-color-2" style="flex:1;height: 100rpx" bindinput="getInput" />
+    </view>
+  </view>
+  <view class="flex-cell btn-view" style="flex:1;">
+    <view class="main-bg btn" bindtap="recharge">下一步</view>
+  </view>
+</view>

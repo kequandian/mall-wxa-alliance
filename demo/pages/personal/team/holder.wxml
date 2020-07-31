@@ -1,0 +1,59 @@
+<!--pages/personal/holder/index.wxml-->
+<view style="text-align: center; padding: 20rpx;" wx:if="{{allianceData}}">
+  <!-- <view class="flex-cell main-bg total-bonus">
+    <view>
+      <text>¥</text>
+      <text style="font-size: 50rpx;">{{ holder.total_bonus }}</text>
+    </view>
+    <view style="font-size: 24rpx;">当前分红</view>
+  </view> -->
+  <view style="text-align: center;margin: 40rpx;">
+    <view class="main-bg circular-view" style="min-height: 100px; min-width: 100px;">
+      <view class="value">
+        <text style="margin-right: 10rpx;">¥</text>
+        <text style="font-size: 60rpx;">{{allianceData.totalSelfBonus || 0}}</text>
+        <text style="font-size: 30rpx;height:1.2">\n当前分红</text>
+      </view>
+    </view>
+  </view>
+  <view class="main-color-2" style="text-align: center;">年化收益</view>
+  <view class="flex-row date-view" wx:if="{{allianceData.dividedTime}}">
+    <view style="font-size: 24rpx;color: #333;">当前数据</view>
+    <view style="font-size: 20rpx;color: #666;">分红时间：{{allianceData.dividedTime}}</view>
+  </view>
+  <view class="bonus-spread">
+    <view class="flex-cell rowWidth" style="align-items: center;flex: 1;">
+      <!-- <view class="full-num">{{ holder.holder_num }}</view> -->
+      <view class="circular-view" style="min-height: 70px; min-width: 70px;background: #e79b37;">
+        <view class="value" style="width:{{valueWidth}}rpx;">
+          <!-- <text style="margin-right: 10rpx;">¥</text> -->
+          <text style="font-size: 60rpx;">{{allianceData.stockholderCount || 0}}</text>
+          <!-- <text style="font-size: 30rpx;height:1.2">\n当前分红</text> -->
+        </view>
+      </view>
+      <view style="font-size: 24rpx;color:#333;">分红盟友总人数</view>
+      <view class="spread-num">
+        <text style="font-size: 22rpx;color:#999;">平均分红</text>
+        <text class="main-color" style="font-size: 20rpx;">¥</text>
+        <text class="main-color" style="font-size: 30rpx;">{{ allianceData.selfBonus || 0 }}</text>
+      </view>
+    </view>
+    <view class="flex-cell rowWidth" style="align-items: center;flex: 1;">
+      <!-- <view class="full-num">{{ holder.team_ratio * 100 }}<text style="font-size: 20rpx;">%</text></view> -->
+      <view class="circular-view" style="min-height: 70px; min-width: 70px;background: #e79b37;">
+        <view class="value" style="width:{{valueWidth}}rpx;">
+          <!-- <text style="font-size: 60rpx;">{{allianceData.proportion || 0}}</text> -->
+          <text style="font-size: 60rpx;">{{allianceData.proportion || 0.7}}</text>
+          <text style="margin-right: 10rpx;">%</text>
+          <!-- <text style="font-size: 30rpx;height:1.2">\n当前分红</text> -->
+        </view>
+      </view>
+      <view style="font-size: 24rpx;color:#666;">我的团队占比分红</view>
+      <view class="spread-num">
+        <text style="font-size: 22rpx;color:#999;">占比分红</text>
+        <text class="main-color" style="font-size: 20rpx;">¥</text>
+        <text class="main-color" style="font-size: 30rpx;">{{ allianceData.teamSelfBonus }}</text>
+      </view>
+    </view>
+  </view>
+</view>

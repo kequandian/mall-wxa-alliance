@@ -1,0 +1,271 @@
+@import "../../utils/template/common.wxss";
+
+page {
+  height: 100%;
+  width: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.headerSearch {
+  width: 100%;
+  height: 100rpx;
+
+  border-bottom: 2rpx solid #F2F2F2;
+  position: relative;
+  background: #f2f2f2;
+}
+.search-icon {
+  position: absolute;
+  left: 120rpx;
+  top: 15rpx;
+}
+.search-img {
+  margin: 40rpx 0 auto 20rpx;
+}
+.headerSearch input {
+  /* border: 2rpx solid red; */
+  width: 90%;
+  height: 60rpx;
+
+  margin: 20rpx auto;
+  border-radius: 10rpx;
+  background: #fff;
+  padding-left: 20rpx;
+
+}
+.headerSearch image {
+  position: absolute;
+  top: 18rpx;
+  right: 90rpx;
+  height: 30rpx;
+  width: 30rpx;
+  margin: auto 0 auto 0;
+}
+
+.placeholder {
+  font-size: 24rpx;
+  color: #c6c6c6;
+  margin-left: 20rpx;
+  text-align: center;
+
+}
+
+/*------------------------*/
+.category-view {
+  flex:1;
+  display: flex;
+
+  flex-direction: row;
+  color: #58575D;
+
+
+}
+
+.left-view {
+  display: flex;
+  flex-direction: column;
+  width: 200rpx;
+  border-right: 3rpx solid #ccc;
+}
+.left-item {
+  padding-left: 30rpx;
+  margin: 30rpx auto;
+  text-align: center;
+  font-size: 32rpx;
+  margin-left: 10rpx;
+
+}
+.light {
+  color: #fc574e;
+  border-left: 5rpx solid #fc574e;
+  padding-left: 25rpx;
+}
+
+.right-view {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex: 1;
+}
+.right-item {
+  border-bottom: 20rpx solid #F2F2F2;
+}
+.itemI-name {
+  margin: 20rpx 0;
+  font-size: 30rpx;
+  color: #999999;
+}
+.sub_categories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 26rpx;
+  text-align: center;
+  justify-content: left;
+  margin: 0 20rpx;
+}
+.sub-item {
+  flex: 20%;
+  flex-wrap: wrap;
+  margin: 20rpx;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sub-item image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/* .hit-search {
+  width: 100%;
+  font-size:32rpx;
+  margin: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.hit-link {
+  width: 100%;
+  font-size: 26rpx;
+}
+.hitWordItem {
+
+  line-height: 50rpx;
+  flex-wrap: wrap;
+  padding: 5rpx;
+  background-color: #f2f2f2;
+  border-radius: 30rpx;
+  margin-left: 50rpx;
+  margin-top: 20rpx;
+  width: 120rpx;
+  height: 50rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+.hit-search text {
+  width: 150rpx;
+  display: flex;
+  flex: 0;
+  font-size: 26rpx;
+}
+.hitWord {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 80rpx;
+
+}
+
+.borderView{
+  background-color: #F2F2F2;
+  height: 10rpx;
+}
+.category {
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 80rpx;
+}
+.category-link {
+  width: 100%;
+  font-size: 34rpx;
+  margin-top: 50rpx;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 120rpx;
+
+  margin: 50rpx;
+  font-size: 28rpx;
+
+}
+.creagoryItem text {
+  margin-top: 20rpx;
+}
+.categoryImg { 
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto 15rpx auto;
+}
+ */
+
+
+
+ .Recommend {
+  width: 100%;
+	display: flex;
+ 	flex-wrap: wrap;
+ 	margin: 0 auto;
+ 	background-color: #EFEEF4;
+}
+.RecommendItem {
+  width: 350rpx;
+	display: flex;
+	flex-direction: column;
+/* 	border:  solid #f2f2f2; */
+	font-size: 32rpx;
+	/* margin: 5rpx 0; */
+	/* border: 3rpx solid #ccc; */
+	background-color: #fff;
+  padding: 6rpx;
+  margin: 6rpx;
+  border-radius: 10rpx;
+}
+.RecommendImg {
+	width: 100%;
+}
+.RecommendName {
+	text-align: center;
+}
+.RecommendPrice {
+	text-align: center;
+	margin: 20rpx auto;
+	color: #f13232;
+}
+
+.onClick-light {
+	color: red;
+}
+
+/* ----- */
+.product-name {
+  font-size: 24rpx;
+  padding: 10rpx 15rpx;
+  color: #333;
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.tariff {
+  border-right: 1rpx solid #999;
+  padding: 0 10rpx;
+  text-align: center;
+}
+.tariff .value {
+  font-size: 24rpx;
+}
+.tariff .laber {
+  font-size: 18rpx;
+  color: #666;
+}
+.foot-price {
+  justify-content: space-between;
+  padding: 30rpx 10rpx;
+}
+.make-btn {
+  font-size: 24rpx;
+  background: #d23f3a;
+  color: #fff;
+  padding: 4rpx 10rpx;
+  border-radius: 15rpx;
+  margin-left: 10px;
+}

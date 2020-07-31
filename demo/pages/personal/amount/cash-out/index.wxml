@@ -1,0 +1,42 @@
+<!--pages/personal/amount/recharge/index.wxml-->
+<view class="container" style="height: 100%;">
+  <view class="head">
+    <view class="main-bg circular-view">
+      <view class="value">
+        <text style="margin-right: 10rpx;">¥</text>
+        <text style="font-size: 60rpx;">{{allianceData.bonus_balance?allianceData.bonus_balance:0}}</text>
+        <text style="font-size: 30rpx;height:1.2">\n可提现额度</text>
+      </view>
+    </view>
+    <view style="color:#666; margin-top: 20rpx;">冻结金额：¥{{allianceData.expected_bonus?allianceData.expected_bonus:0}}</view>
+  </view>
+  <view>
+    <form bindsubmit="onSubmit">
+      <!-- <view class="flex-row">
+        <label>姓名：</label>
+        <input type="text" placeholder="请输入姓名" name="cashOutName" data-layer="cashOutName" bindinput="getInput" />
+      </view>
+      <view class="flex-row">
+        <label>卡号：</label>
+        <input type="number" placeholder="请输入卡号：" name="bankNumber" data-layer="bankNumber" bindinput="getInput" />
+      </view>
+      <view class="flex-row">
+        <label>开户行：</label>
+        <input type="text" placeholder="请输入开户行" name="openBank" data-layer="openBank" bindinput="getInput" />
+      </view> -->
+      <view class="flex-row">
+        <label>金额：</label>
+        <input type="number" placeholder="请输入要提现的金额" name="amount" value="{{formData.withdraw_cash}}"  data-layer="amount" bindinput="getInput" />
+      </view>
+      <view class="foot-btn">
+        <button class="default-botton main-bg" hover-class="hoverView" form-type="submit" data-cash-type="offline" style="margin-bottom: 20rpx;">线下提现</button>
+        <button class="default-botton main-bg" hover-class="hoverView" form-type="submit" data-cash-type="WALLET" style="margin-bottom: 20rpx;">转入钱包</button>
+        <button class="default-botton" type='primary' hover-class="hoverView" form-type="submit" data-cash-type="WECHAT" >提现至微信零钱</button>
+      </view>
+    </form>
+  </view>
+  <!-- <view class="flex-cell btn-view" style="flex:1;">
+    <view class="main-bg btn" bindtap="recharge">下一步</view>
+  </view> -->
+</view>
+

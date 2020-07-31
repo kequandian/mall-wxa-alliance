@@ -1,0 +1,14 @@
+<template name="menu">
+	<view class="menu">
+		<block wx:for="{{ menuArr.categoryData }}" wx:key="{{this}}">
+			<view class="MenuItem" bindtap="OnClickMenu" data-menu-id="{{item.id}}" data-menu-index="{{index}}" data-menu-name="{{item.name}}" hover-class="onClick-light">
+				<image class="MenuImg" src="../../images/{{ menuArr.menuImg[index].img }}" ></image>
+				<text> {{item.name}} </text>
+			</view>
+		</block>
+		<!-- <view class="MenuItem" hover-class="onClick-light">
+			<image class="MenuImg" src="../../images/zhsp-menu.png" ></image>
+			<text> 组合商品 </text>
+		</view> -->
+	</view>
+</template>

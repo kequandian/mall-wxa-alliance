@@ -1,0 +1,41 @@
+<!--pages/personal/index.wxml-->
+<view>
+  <view class="main-bg order-type">
+    <view wx:if="{{ orderTypes }}" wx:for="{{ orderTypes }}" wx:key="{{ item.type }}" class="item-type" bindtap="openPage" data-url="{{item.url}}">
+      <image src="{{ item.icon }}"></image>
+      <view>{{ item.title }}</view>
+    </view>
+  </view>
+  <view>
+    <view wx:for="{{ list }}" wx:if="{{item.status}}" class="flex-row item-pocket" bindtap="openPage" data-url="{{ item.path }}">
+      <view class="flex-row">
+        <image src="{{ item.icon }}" style="width: 52rpx; height: 52rpx; margin-right: 10rpx;"></image>
+        <view>{{ item.title }}</view>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>
+<van-popup custom-class="flex-cell wallet-popup" show="{{ isShowPopup }}" close-on-click-overlay bind:close="onClose">
+  <view class="popup-head main-bg">
+    <view style="color: #fff;">设置支付密码</view>
+  </view>
+  <view class="flex-cell" style="flex: 1;" >
+    <form class="flex-cell" bindsubmit="walletPassword">
+      <view style="flex: 1; padding:40rpx 20rpx; color:#999">
+        <view class="flex-row" >
+          <view>输入新密码</view>
+          <input name="password1" value="{{passwordInput}}" type="text" placeholder="" password class="password-input" />
+        </view>
+        <view class="flex-row" style="margin-top: 20rpx;" >
+          <view>确认新密码</view>
+          <input name="password2" value="{{passwordInput}}" type="text" placeholder="" password class="password-input" />
+        </view>
+      </view>
+      <view class="flex-row popup-foot">
+        <!-- <button class="default-botton btn" style="flex: 1;border-right: 1rpx solid #ccc;" bindtap="onClose">取消</button> -->
+        <button class="default-botton btn" style="" form-type="submit" >确定</button>
+      </view>
+    </form>
+  </view>
+</van-popup>

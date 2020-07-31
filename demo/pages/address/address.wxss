@@ -1,0 +1,71 @@
+/* address.wxss */
+.container {
+}
+.addressArr {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 100rpx;
+}
+.item-address {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 3rpx solid #ccc;
+	color: #020203;
+	font-size: 30rpx;
+	padding: 40rpx;
+}
+.icon {
+	width: 60rpx;
+	margin: 20rpx;
+}
+.radio {
+	margin: auto 20rpx auto 0;
+
+}
+.address-main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.user {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.name {
+	
+	width: 250rpx;
+}
+.phone {
+	
+	/* margin-right:80rpx; */
+}
+.default {
+  margin: auto;
+	margin-right: 0;
+	background-color:red;
+	padding: 10rpx;
+	border-radius: 10rpx;
+	font-size: 24rpx;
+	color: #fff;
+
+}
+.address-text {
+	margin-top: 20rpx;
+	width: 550rpx;
+}
+.img {
+	margin: auto;
+}
+.img image{
+	width: 30rpx;
+	height: 30rpx; 
+}
+.add-Address {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100rpx;
+	border-radius: 0;
+}

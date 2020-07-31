@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "van-button": "../../utils/vant/button/index"
+  }
+}

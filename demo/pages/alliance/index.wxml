@@ -1,0 +1,182 @@
+<!--pages/ally/index.wxml-->
+<view wx:if="{{allianceData}}">
+  <view class="main-bg page-head">
+    <view class="userInfo" bindtap="openPage" data-url="../personal/team/profile?id={{allianceData.id}}&isSelf=true" data-open-type="">
+      <image class="user-avatar" wx:if="{{allianceData.wechatAvatar}}" src="{{allianceData.wechatAvatar}}"></image>
+      <image class="user-avatar" wx:else src="../../images/default_avatar.png"></image>
+
+      <view class="user-nick">个人信息</view>
+      <!-- <view class="user-nick">{{userProfile.name}}</view> -->
+    </view>
+    <!-- <view class="userInfo" wx:else bindtap="openPage" data-url="../personal/index">
+      <image class="user-avatar" src="../../images/default_avatar.png"></image>
+      <view class="user-nick">未登录</view>
+    </view> -->
+    <view class="head-text">
+      <view style="color: #FFFF00;">亲爱的盟友,你好！
+        <!-- <block wx:if="{{now_hours >= 6 && now_hours <= 11}}">早上好!</block>
+        <block wx:elif="{{now_hours <= 13}}">中午好!</block>
+        <block wx:elif="{{now_hours <= 20}}">下午好!</block>
+        <block wx:else>晚上好!</block> -->
+      </view>
+      <view>盟友团队 {{ allianceData.allianceTeam ? allianceData.allianceTeam.length : 0 }}</view>
+      <view>十美币 ¥{{ allianceData.balance || 0 }}</view>
+      <!-- <view>总提成 ¥{{ allianceData.totalSelfBonus || 0 }}</view> -->
+    </view>
+    <view class="head-absolute">
+      <view class="flex-row" bindtap="showPopup" data-layer="showInvitationCode">
+        <text style="font-size: 32rpx">邀请码</text>
+        <van-icon name="qr" size="20px" />
+      </view>
+      <!-- <van-icon name="wap-nav" /> -->
+      <view class="btn" bindtap="openPage" data-url="../category/category" data-open-type="switchTab">共创产品</view>
+    </view>
+  </view>
+  <!-- TODO 未上架商品暂时隐藏 -->
+  <view class="module-view new-order" wx:if="{{1==2}}">
+    <view class="laber">您的商品有新订单！</view>
+    <view class="flex-row">
+      <view>代发货订单：</view>
+      <view class="seen-btn">发货</view>
+    </view>
+    <view class="flex-row">等付款订单：</view>
+    <view class="flex-row">今日总成交额：¥</view>
+    <view class="consult-btn">
+      <button class="default-botton" open-type="contact" bindcontact="handleContact">
+        <van-icon name="chat" color="#5ecc3d" size="22px" />
+        <view style="font-size: 20rpx;color: #999;">咨询</view>
+      </button>
+    </view>
+  </view>
+<!-- 广告轮播图 -->
+  <view class="container" wx:if="{{adListData.length > 0}}">
+    <view class="page-body">
+      <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="true"
+          autoplay="true" interval="3000" duration="800"
+          circular="true"
+          style="height:{{imgheights[current]}}rpx;"
+          >
+          <block wx:for="{{adListData}}" wx:key="*this">
+            <swiper-item>
+              <view class="swiper-item" bindtap="openPage" data-url="../details/details?id={{item.productId}}" data-open-type="" data-id="{{item.productId}}">
+                <image mode="widthFix" data-id='{{index}}' src="{{item.image}}" bindload="imageLoad" />
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-details" wx:key="id" wx:if="{{recommend && recommendIndex >- 1}}">
+    <block wx:if="{{recommend[recommendIndex].banner}}">
+      <image mode="widthFix" src="{{recommend[recommendIndex].banner}}"></image>
+    </block>
+    <view style="padding: 20rpx 0 30rpx 20rpx;">
+      <view>{{ recommend[recommendIndex].name }}</view>
+      <view>
+        <text class="main-color" style="font-size:20rpx;">月销量{{recommend[recommendIndex].sales}}件</text>
+        <!-- <text style="font-size:20rpx; color:#999; text-decoration: line-through;">|原价¥80</text> -->
+      </view>
+      <!-- <view class="flex-row" style="padding: 20rpx 0;">
+        <view>距离结束</view>
+        <text class="date-value">3</text>
+        <text>天</text>
+        <text class="date-value">3</text>
+        <text>时</text>
+        <text class="date-value">33</text>
+        <text>分</text>
+      </view> -->
+      <view class="flex-row" style="justify-content: space-between;">
+        <view class="flex-row" style="align-items:flex-end;">
+        <view class="flex-cell tariff" wx:if="{{recommend[recommendIndex].suggested_price}}">
+          <text class="main-color value">¥{{recommend[recommendIndex].suggested_price}}</text>
+          <text class="laber">零售价</text>
+        </view>
+        <view class="flex-cell tariff" wx:if="{{ recommend[recommendIndex].distribution_price}}">
+          <text class="main-color value">¥{{recommend[recommendIndex].distribution_price}}</text>
+          <text class="laber">分销价</text>
+        </view>
+        <block wx:if="{{recommend[recommendIndex].settlementProportions}}" wx:for="{{recommend[recommendIndex].settlementProportions}}" wx:for-item="pItem" wx:key="id">
+          <view class="flex-cell tariff" wx:if="{{pItem.type==='STOCKHOLDER' && pItem.proportion && pItem.proportion.value > 0}}">
+            <text class="main-color value" wx:if="{{pItem.proportion.percentage}}">{{pItem.proportion.value}}%</text>
+            <text class="main-color value" wx:elif="{{pItem.proportion.fixedvalue}}">{{pItem.proportion.value}}</text>
+            <text class="laber">推荐提成</text>
+          </view>
+        </block>
+        <block wx:if="{{recommend[recommendIndex].settlementProportions}}" wx:for="{{recommend[recommendIndex].settlementProportions}}" wx:for-item="pItem" wx:key="id">
+          <view class="flex-cell tariff" wx:if="{{pItem.type==='STOCKHOLDER' && pItem.proportion && pItem.proportion.value > 0}}">
+            <text class="main-color value" wx:if="{{pItem.proportion.percentage}}">{{pItem.proportion.value}}%</text>
+            <text class="main-color value" wx:elif="{{pItem.proportion.fixedvalue}}">{{pItem.proportion.value}}</text>
+            <text class="laber">产品分红</text>
+          </view>
+        </block>
+        </view>
+        <view class="flex-row" style="padding-right: 20rpx;">
+          <view style="line-height:1em;">
+            <text style="font-size: 20rpx; color:#333;">体验价：</text>
+            <text class="main-color-2" style="font-size:20rpx;margin-right:6rpx;">¥</text>
+            <text class="main-color-2 price" style="font-size: 32rpx;">{{recommend[recommendIndex].price}}</text>
+          </view>
+          <view class="make-btn" bindtap="openPage" data-url="../details/details?id={{recommend[recommendIndex].id}}" data-open-type="" data-id="{{ recommend[recommendIndex].id }}">立即购买</view>
+        </view>
+      </view>
+      <view class="flex-row" style="padding-top: 30rpx; font-size: 28rpx;" bindtap="openPage" data-url="../category/category" data-open-type="switchTab">
+        <view>查看更多产品</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+  </view>
+  
+  <view class="module-view title-module">
+    <view class="main-bg head" bindtap="openPage" data-url="../personal/team/award">
+      <view>本月收入</view>
+      <van-icon name="arrow" color="#fff" />
+    </view>
+    <view style="text-align: center; padding: 40rpx;">
+      <view class="main-color">
+        <text>¥</text>
+        <text style="font-size: 60rpx;">{{allianceData.commissionBalance || 0}}</text>
+      </view>
+      <view>继续加油努力！</view>
+    </view>
+  </view>
+  <view class="module-view title-module" wx:if="{{ allianceData.currentMonthOrder.length }}">
+    <view class="main-bg head" bindtap="openPage" data-url="../order/order">
+      <view>最近订单</view>
+      <van-icon name="arrow" color="#fff" />
+    </view>
+    <view style="padding: 20rpx;">
+      <view class="flex-row" style="padding: 10rpx;justify-content: space-between;">
+        <text>订单编号：{{allianceData.currentMonthOrder[0].order_number}}</text>
+        <text class="main-color">{{allStatusName[allianceData.currentMonthOrder[0].status]}}</text>
+      </view>
+      <view style="padding: 10rpx;">订单金额：¥ {{allianceData.currentMonthOrder[0].total_price}}</view>
+    </view>
+    <view class="logistics-btn" bindtap="openPage" data-url="../order/express?order_number={{allianceData.currentMonthOrder[0].order_number}}" wx:if="{{allianceData.currentMonthOrder[0].express_list}}">物流查看</view>
+  </view>
+</view>
+<view wx:elif="{{isAllianceRequest}}" style="color: #666;padding: 30rpx;text-indent: 2em;">
+  欢迎你来到十美创享之家， 你目前还不是我们的盟友， 如果你想加入我们一起资源共享， 可通过“碧丽雅”微信公众平台联系我们。
+</view>
+
+<van-dialog use-slot title="邀请码" show="{{ showInvitationCode }}" data-layer="showInvitationCode" confirm-button-text="关闭" close-on-click-overlay bind:confirm="hidePopup">
+  <view style="padding: 20rpx; text-align: center; color: #666;">
+    <image style="width: 400rpx;" mode="widthFix" class="invitation-img" src="{{userProfile.invitation_qrcode_url}}"></image>
+  </view>
+</van-dialog>
+
+<van-popup custom-class="flex-cell new-user-popup" show="{{ showNewUser &&  allianceData.inventoryAmoun}}" close-on-click-overlay bind:close="onClose" custom-style="background: transparent;">
+  <view class="new-user-popup-main">
+    <!-- <view class="colse-view" bindtap="onClose"></view> -->
+    <van-icon class="colse-view" name="cross" bindtap="onClone" />
+    <image style="width: 690rpx;" mode="widthFix" src="../../images/index-popup.png"></image>
+    <view class="text-view">
+      <view style="font-size: 40rpx;">恭喜您成为十美盟友</view>
+      <view style="font-size: 28rpx; margin-top:30rpx;">您当前的库存余额：</view>
+      <view style="font-size: 60rpx; margin-bottom:30rpx;">¥{{allianceData.inventoryAmount}}</view>
+      <view style="font-size: 30rpx; color:#FFFF00;">请享受您的愉快购物之旅</view>
+    </view>
+  </view>
+</van-popup>

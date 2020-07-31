@@ -1,0 +1,58 @@
+/* pages/personal/index.wxss */
+page {
+  background: #f0f0f0;
+}
+.order-type {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  /* background: #fff; */
+  padding: 20rpx 0;
+}
+.item-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  /* color: #666; */
+}
+.item-type image {
+  height: 70rpx;
+  width: 70rpx;
+}
+.item-type view{
+  font-size: 24rpx;
+}
+
+.item-pocket {
+  margin: 15rpx 0;
+  padding: 20rpx;
+  justify-content: space-between;
+  background: #fff;
+  color: #555;
+}
+
+.wallet-popup .popup-head {
+  text-align: center;
+	border-bottom: 1rpx solid #ccc;
+  padding: 30rpx;
+}
+.password-input {
+  border: 1rpx solid #ccc;
+  flex: 1;
+  padding: 20rpx;
+  margin-left: 20rpx;
+}
+.wallet-popup .popup-foot {
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  border: 0;
+}
+.wallet-popup .popup-foot .btn {
+  padding: 20rpx;
+  width: 80%;
+  background: #999;
+  color: #fff;
+  margin-bottom: 40rpx;
+}

@@ -1,0 +1,158 @@
+/* index.wxss */
+/**index.wxss**/
+/* 定义页面样式 ，css语法*/
+page {
+  width: 100%;
+}
+.search-icon {
+  position: absolute;
+  left: 180rpx;
+  top: 35rpx;
+  z-index: 60;
+}
+.headerSearch {
+	float: left;
+  width: 100%;
+  position: relative;
+  z-index: 50;
+  opacity: 0.6;
+}
+.headerSearch input {
+  border: 2rpx solid while;
+  width: 90%;
+  margin: 20rpx auto;
+  border-radius: 15rpx;
+  background-color: #fff;
+  height:60rpx;
+  padding-left: 20rpx;
+  /* background-color: #fff; */
+/*   background-image:url('../../images/search.png');
+  background-repeat:no-repeat;
+background-size: 40rpx 40rpx;
+background-position: right; */ 
+}
+
+.slide swiper {
+	height: 417rpx;
+	/* margin-top: 20rpx; */
+}
+.slide-image {
+	width: 100%;
+	height: 100%;
+	/* margin-left: 5%; */
+}
+
+
+.placeholder {
+  font-size: 24rpx;
+  color: #808080;
+  margin-left: 20rpx;
+  text-align: center;
+}
+
+.menu {
+ 	display: flex;
+	flex-direction: row;
+	height: 200rpx;
+	margin-top: 10rpx; 
+}
+.MenuItem {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content:center;
+	font-size: 30rpx;
+}
+.MenuImg {
+	width: 96rpx;
+	height: 96rpx;
+	margin: 0 auto;
+}
+.MenuItem text {
+	padding: 0rpx
+}
+
+.tell-link {
+	font-size: 26rpx;
+}
+.Recommend {
+  width: 100%;
+	display: flex;
+ 	flex-wrap: wrap;
+ 	margin: 0 auto;
+ 	background-color: #EFEEF4;
+}
+.Recommend-link{
+	width: 100%;
+	color: #fc574e;
+	text-align: center;
+	background-color: #EFEEF4;
+	padding: 20rpx;
+	font-size: 28rpx;
+}
+.RecommendItem {
+  width: 350rpx;
+	display: flex;
+	flex-direction: column;
+/* 	border:  solid #f2f2f2; */
+	font-size: 32rpx;
+	/* margin: 5rpx 0; */
+	/* border: 3rpx solid #ccc; */
+	background-color: #fff;
+  padding: 6rpx;
+  margin: 6rpx;
+  border-radius: 10rpx;
+}
+.RecommendImg {
+	width: 100%;
+}
+.RecommendName {
+	text-align: center;
+}
+.RecommendPrice {
+	text-align: center;
+	margin: 20rpx auto;
+	color: #f13232;
+}
+
+.onClick-light {
+	color: red;
+}
+
+/* ----- */
+.product-name {
+  font-size: 24rpx;
+  padding: 10rpx 15rpx;
+  color: #333;
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.tariff:last-child {
+  border: 0;
+}
+.tariff {
+  border-right: 1rpx solid #999;
+  padding: 0 10rpx;
+  text-align: center;
+}
+.tariff .value {
+  font-size: 24rpx;
+}
+.tariff .laber {
+  font-size: 18rpx;
+  color: #666;
+}
+.foot-price {
+  justify-content: space-between;
+  padding: 30rpx 10rpx;
+}
+.make-btn {
+  font-size: 22rpx;
+  background: #d23f3a;
+  color: #fff;
+  padding: 4rpx 10rpx;
+  border-radius: 15rpx;
+  margin-left: 10px;
+}

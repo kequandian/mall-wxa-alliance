@@ -1,0 +1,87 @@
+/* setAddress.wxss */
+
+page {
+	width: 100%;
+	height: 100%;
+	background-color: #f7f7f7;
+}
+.container {
+	
+}
+.address-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+  color: #666;
+	/* background-color: #fff; */
+}
+.form-line {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 2rpx solid #eee;
+	padding: 20rpx;
+	background-color: #fff;
+}
+.form-line text {
+	width: 280rpx;
+}
+.form-line input {
+	text-align: right;
+}
+.area {
+	flex: 1;
+}
+switch {
+	margin-left: 300rpx;
+}
+textarea {
+	height: 150rpx;
+}
+
+.popup-animation {
+	font-size: 28rpx;
+	width: 100%;
+	height: 0;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.popup-opacity {
+	width: 100%;
+	height: 732rpx;
+	background: #000;
+	opacity: 0.5;
+}
+.popup-container {
+	width: 100%;
+	height: 500rpx;
+	position: relative;
+	background: #fff;
+}
+.popup-header {
+	width: 100%;
+	height: 80rpx;
+	margin-bottom: 20rpx;
+}
+.confirm,.cancel {
+	display: block;
+	position: absolute;
+	width: 100rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	color: #0f0;
+}
+.cancel {
+	right: 0;
+	top: 0;
+}
+
+.address-form button {
+  border-radius: 0;
+}
+
+.save {
+  margin: 20rpx 0;
+}

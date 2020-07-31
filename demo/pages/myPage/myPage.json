@@ -1,0 +1,10 @@
+{
+  "widonws": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "个人中心"
+  },
+  "usingComponents": {
+    "van-dialog": "../../utils/vant/dialog/index"
+  }
+}

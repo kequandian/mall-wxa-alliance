@@ -1,0 +1,11 @@
+/* pages/personal/amount/recharge.wxss */
+page {
+  background: #e9eeee;
+}
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1rpx solid #ccc;
+  padding: 20rpx;
+}

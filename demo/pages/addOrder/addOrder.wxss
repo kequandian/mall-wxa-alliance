@@ -1,0 +1,323 @@
+/* pages/addOrder/addOrder.wxss */
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+  padding-bottom: 100rpx;
+}
+.contact {
+	display: flex;
+	flex-direction: row;
+  align-items: center;
+  padding: 20rpx 0;
+	background-color: #fff;
+	color: #000;
+	border-top: 3rpx solid #EFEEF4;
+	border-bottom: 20rpx solid #EFEEF4;
+}
+.addressImg {
+	width: 60rpx;
+	height: 60rpx;
+	margin: auto 40rpx;
+}
+.people {
+	margin: 20rpx 0 ;
+	font-size: 34rpx;
+}
+.people text {
+	margin-right: 50rpx;
+}
+
+.address {
+	font-size: 26rpx;
+	width: 520rpx;
+	margin-bottom: 20rpx;
+	color: #868688;
+
+}
+
+.arrowright {
+	
+	width: 30rpx;
+	height: 30rpx;
+	margin: auto;
+	margin-right: 40rpx;
+}
+
+/*------------------------*/
+
+.productList {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border-bottom: 20rpx solid #EFEEF4;
+}
+
+.item-product {
+	display: flex;
+	flex-direction: row;
+	font-size: 30rpx;
+	background-color: #fff;
+	border-top: 2rpx solid #F0EFF5;
+}
+.product {
+/* 	display: flex;
+	flex-direction: row; */
+}
+.item-product image {
+	width: 150rpx;
+	height: 150rpx;
+	margin: 20rpx;
+}
+
+.product-name {
+	width: 500rpx;
+	margin: 20rpx 50rpx 20rpx 0;
+
+}
+.product-name text {
+	line-height: 1.5
+}
+.number-view {
+	display: flex;
+	flex-direction: row;
+	margin-top: 50rpx;
+	margin-bottom: 20rpx;
+}
+.price {
+	color: red;
+}
+.quantity {
+	margin: auto;
+	margin-right: 30rpx;
+}
+
+.quantity-view {
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+	margin-right: 40rpx;
+	border: 3rpx solid #ccc;
+	/* border: 2rpx solid red; */
+}
+.quantity-view input {
+	width: 70rpx;
+	text-align: center;
+	height:40rpx;
+	line-height:40rpx;
+	border-left: 3rpx solid #ccc;
+	border-right: 3rpx solid #ccc;
+}
+.quantity-button {
+	width: 40rpx;
+	height:40rpx;
+	line-height:40rpx;
+	margin: auto 0;
+	text-align:center;
+}
+.delivery-way {
+  display: flex;
+  flex-direction: column;
+	font-size: 26rpx;
+	/* padding: 20rpx 0 20rpx 40rpx; */
+	border-bottom: 20rpx solid #EFEEF4;
+}
+.delivery-way .row {
+  padding: 20rpx 0 20rpx 40rpx;
+  border-bottom: 2rpx solid #EFEEF4;
+}
+.delivery {
+	margin-left: 430rpx;
+}
+.delivery-way span {
+	color: red;
+}
+
+/*-------优惠券-----------*/
+.discount {
+	font-size: 26rpx;
+}
+
+.coupon {
+	padding: 20rpx 0 20rpx 40rpx;
+	border-bottom: 3rpx solid #EFEEF4;
+}
+.coupon-num {
+	margin-left: 450rpx;
+	margin-right: 40rpx;
+}
+.coupon image {
+	margin: auto;
+	margin-right: 20rpx;
+}
+.integral {
+	padding: 20rpx 0 20rpx 40rpx;
+	border-bottom: 20rpx solid #EFEEF4;
+}
+.integral switch {
+	margin-left: 340rpx;
+}
+
+.remark {
+	font-size: 26rpx;
+	padding: 20rpx 40rpx;
+	border-bottom: 20rpx solid #EFEEF4;
+}
+
+.bill {
+	display: flex;
+	flex-direction: column;
+}
+
+.bill-item {
+	display: flex;
+	flex-direction: row;
+	font-size: 26rpx;
+	padding: 20rpx 40rpx;
+}
+.bill-item view {
+	color: #f13232;
+	margin: auto;
+	margin-right: 20rpx;
+}
+
+.payment {
+	display: flex;
+	flex-direction: row;
+	font-size: 30rpx;
+	padding: 20rpx 40rpx;
+	border-top: 5rpx solid #EFEEF4;
+}
+.payment view {
+	color: #f13232;
+	margin: auto;
+	margin-right: 20rpx;
+}
+.bill button {
+  border-radius: 0;
+}
+
+.addOrder-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/*------收货地址列表--------*/
+
+.addressArr {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 100rpx;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 2000px;
+}
+.item-address {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1rpx solid #ccc;
+	color: #020203;
+	font-size: 30rpx;
+	padding: 40rpx;
+}
+.item-address:last-child {
+	border: 0;
+}
+.icon {
+	width: 60rpx;
+	margin: 20rpx;
+}
+.radio {
+	margin: auto 20rpx auto 0;
+
+}
+.address-main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.user {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.name {
+	
+	width: 250rpx;
+}
+.phone {
+	
+	/* margin-right:80rpx; */
+}
+.default {
+	margin-left: 80rpx;
+	background-color:red;
+	padding: 10rpx;
+	border-radius: 10rpx;
+	font-size: 24rpx;
+	color: #fff;
+
+}
+.address-text {
+	margin-top: 20rpx;
+	width: 550rpx;
+}
+.img {
+	margin: auto;
+}
+.img image{
+	width: 30rpx;
+	height: 30rpx; 
+}
+
+.add-Address {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+  right: 0;
+	border-radius: 0;
+}
+
+.address-popup {
+  min-height: 500rpx;
+  max-height: 80vh;
+  padding-top: 0!important;
+}
+.address-popup .popup-head {
+  text-align: center;
+	border-bottom: 1rpx solid #ccc;
+  padding: 30rpx;
+}
+.address-popup .address-list {
+  max-height: 60vh;
+  overflow-y: scroll;
+  margin-bottom: 100rpx;
+}
+
+.wallet-popup .popup-head {
+  text-align: center;
+	border-bottom: 1rpx solid #ccc;
+  padding: 30rpx;
+}
+.password-input {
+  border: 1rpx solid #ccc;
+  flex: 1;
+  padding: 19rpx;
+  margin-left: 20rpx;
+}
+.wallet-popup .popup-foot {
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  border-top: 1rpx solid #ccc;
+}
+.wallet-btn {
+  padding: 20rpx 0;
+  width: 150rpx;
+  border-radius: 0 10rpx 10rpx 0;
+}

@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="headerSearch" > 
+    <icon class="search-icon" type="search" size="16" color="#ccc"></icon>
+    <input type="text" focus bindconfirm="searchAgency" placeholder-class="placeholder"  placeholder="请输入你想寻找的商品、品牌" />
+    <!-- <image src="../../images/search.png"></image> -->
+  </view>
+  <view class="hit-search" hidden="{{isHit=='false'?true:false}}">
+    <view class="hit-link">热门搜索：</view>
+    <view class="hitWord" > 
+      <view wx:for="{{hitWord}}" >
+        <view class="hitWordItem" bindtap="searchAgency" data-hit-word="{{item.name}}" >{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="productList" wx:if="{{ productList.length >=1 }}">
+    
+    <view class="order">
+      <block wx:for="{{orderArr}}">
+        <view class="orderItem"  wx:if="{{index != 2 }}" bindtap="clickOrder" data-index="{{index}}" style="color:{{item.color}}">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="orderItem" wx:if="{{index == 2 }}" bindtap="clickOrder" data-index="{{index}}" style="color:{{ item.color }}">
+          <!-- <block wx:if="{{ select_one }}"> -->
+            <text hedden="{{ !select }}">{{ item.title }}</text>
+            <text hedden="{{ select }}"> {{ selectPrice }} </text>
+          <!-- </block> -->
+        </view>
+      </block>
+
+    </view> 
+  
+    <view class="productList-main">
+      <view class="productItem" wx:for="{{ productList }}">
+        <image class="productImg" bindtap="getDetails" data-id="{{ item.id }}" src="{{ item.cover }}" mode="aspectFit"></image>
+        <text class="productName">{{ item.short_name }}</text>
+        <text class="productPrice">￥{{ item.cost_price }}</text>
+      </view>
+    </view>
+  </view>
+  <view class="person_box" animation="{{animationData}}">
+      <view class="phone_select" >
+
+        <view class="select_one" bindtap="mySelect" data-order="orderBy">
+            从低到高
+            <image src="../../images/top.png" />
+        </view>
+        <view class="select_one" bindtap="mySelect" data-order="orderByDesc" >
+          从高到低
+          <image src="../../images/bottom.png"></image>
+        </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,129 @@
+<!--order.wxml-->
+<view class="container">
+  <view class="nav">
+    <view wx:for="{{ navArr }}" wx:key="{{item.id}}" class="item-nav {{ lightIndex == index ? 'light':'' }}" bindtap="clickNav" data-index="{{ index }}" data-status="{{ item.status }}">
+      {{ item.title }}
+      <view class="nav-num" wx:if="{{index==1&&users.payPending>0}}">{{users.payPending}}</view>
+      <view class="nav-num" wx:if="{{index==2&&users.delivering>0}}">{{users.delivering}}</view>
+      <view class="nav-num" wx:if="{{index==3&&users.delivered>0}}">{{users.delivered}}</view>
+      <view class="nav-num" wx:if="{{index==4&&users.commentPending>0}}">{{users.commentPending}}</view>
+    </view>
+  </view>
+  <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+  <view wx:if="{{ orderList.length == 0 }}" class="no-data-view">
+    <image class="no-data-img" mode="aspectFit" src="../../images/no-order.png"></image>
+    <view class="no-data-text">无相关订单</view>
+  </view>
+  <view wx:else class="orderList">
+    <view wx:for="{{ orderList }}" wx:key="{{item.id}}" class="item-order">
+      <view class="order-header">
+        <text>订单编号：{{ item.order_number }}</text>
+        <!-- <text class="order-status" wx:if="{{item.status==1}}">待付款</text> -->
+        <text class="order-status main-color">{{allStatusName[item.status]}}</text>
+      </view>
+      <view class="goods">
+        <view class="item-good" bindtap="openPage" data-url="./order-details?order_number={{item.order_number}}" data-order-number="{{item.order_number}}" data-status-name="{{item.statusName}}" wx:for="{{item.order_items}}" wx:for-item="product">
+          <image class="cover" mode="aspectFit" src="{{product.cover}}"></image>
+          <view class="good-right">
+            <text class="good-name">{{product.product_name}}</text>
+            <view class="number-view">
+              <text class="main-color">￥{{product.price}}</text>
+              <text>x {{product.quantity}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="item-foot">
+        <view>共{{item.order_items.length}}件商品</view>
+        <view class="total-price">
+          <text>总价：</text>
+          <view class="main-color">￥{{item.total_price}}</view>
+        </view>
+      </view>
+      <view class="foot-btn">
+        <block wx:if="{{ item.status=='CREATED_PAY_PENDING' }}">
+          <view class="item-btn" catchtap="orderBtn" data-operation="cancel" data-index="{{index}}" data-order-number="{{item.order_number}}">取消订单</view>
+          <view class="item-btn main-bg" catchtap="orderBtn" data-operation="pay" data-index="{{index}}" data-order-number="{{item.order_number}}">去付款</view>
+        </block>
+        <block wx:elif="{{ item.status=='CONFIRMED_DELIVER_PENDING' }}">
+          <!-- <view class="item-btn" catchtap="openPage" data-url="./apply-back?order_number={{item.order_number}}" data-operation="service" data-index="{{index}}" data-order-number="{{item.order_number}}">申请售后</view> -->
+          <view class="item-btn" catchtap="orderBtn" data-url="./apply-back?order_number={{item.order_number}}" data-order-number="{{item.order_number}}" data-operation="service" data-index="{{index}}" data-order-number="{{item.order_number}}">立即退款</view>
+          <view class="item-btn" catchtap="orderBtn" data-operation="reminder" data-index="{{index}}" data-order-number="{{item.order_number}}">提醒发货</view>
+        </block>
+ 
+        <!-- <block wx:elif="{{ item.status=='CLOSED_PAY_TIMEOUT'||item.status=='CLOSED_CANCELED'||item.status=='CLOSED_CONFIRMED'||item.status=='CLOSED_REFUNDED'}}"> -->
+        <block wx:elif="{{ item.status=='CLOSED_PAY_TIMEOUT' }}">
+          <view class="item-btn" catchtap="orderBtn" data-operation="delete" data-index="{{index}}" data-order-number="{{item.order_number}} ">删除订单</view>
+        </block>
+
+        <block wx:elif="{{ item.status=='DELIVERED_CONFIRM_PENDING' }}">
+          <!-- <view class="item-btn" catchtap="openPage" data-url="./apply-back?order_number={{item.order_number}}" data-order-number="{{item.order_number}}" data-operation="service" data-index="{{index}}" data-order-number="{{item.order_number}}">申请售后</view> -->
+          <view class="item-btn" catchtap="orderBtn" data-url="./apply-back?order_number={{item.order_number}}" data-order-number="{{item.order_number}}" data-operation="service" data-index="{{index}}" data-order-number="{{item.order_number}}">退款</view>
+          <view class="item-btn" catchtap="orderBtn" data-operation="express" data-index="{{index}}" data-order-number="{{item.order_number}}" wx:if="{{item.express_list}}">查看物流</view>
+          <view class="item-btn" catchtap="orderBtn" data-operation="confirm" data-index="{{index}}" data-order-number="{{item.order_number}}">确认收货</view>
+        </block>
+
+        <!-- TODO评价暂时隐藏 -->
+        <block wx:elif="{{ 1==2 && item.status=='CLOSED_CONFIRMED'&&!item.commented }}">
+          <!-- <view class="item-btn main-bg" catchtap="orderBtn" data-operation="evaluate" data-index="{{index}}" data-order-number="{{item.order_number}}">评价</view> -->
+          <view class="item-btn" catchtap="openPage" data-url="./evaluate?order_number={{item.order_number}}" data-order-number="{{item.order_number}}" data-operation="service" data-index="{{index}}" data-order-number="{{item.order_number}}">评价</view>
+        </block>
+      </view>
+      <!-- <view class="order-footer" wx:if="{{item.status!='CLOSED_PAY_TIMEOUT'}}"> -->
+      <!--<view class="total_price">
+					总价： <text>￥{{item.total_price}}</text>
+				</view> -->
+      <!-- <view class="button-view">
+					<button type="default" bindtap="delOrder" wx:if="{{item.status=='CLOSED_PAY_TIMEOUT'}}" data-order-number="{{ item.order_number }}">删除订单</button>
+					<button wx:if="{{item.status == 'CREATED_PAY_PENDING'}}" data-order-number="{{ item.order_number }}" class="payment" bindtap="payment">立即付款</button>
+				</view> -->
+      <!-- </view> -->
+      <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+    </view>
+  </view>
+</view>
+
+<van-popup custom-class="flex-cell wallet-popup" show="{{ isWalletPay }}" close-on-click-overlay bind:close="onClose">
+  <view class="popup-head">
+    <view>输入支付密码</view>
+  </view>
+  <view class="flex-cell" style="flex: 1;">
+    <form class="flex-cell" bindsubmit="walletPay">
+      <view style="flex: 1; padding:40rpx 20rpx; ">
+        <view class="flex-row">
+          <!-- <view>密码</view> -->
+          <input name="password" value="{{passwordInput}}" type="text" placeholder="请输入钱包支付密码" password class="password-input" />
+          <button class="default-botton main-bg wallet-btn" style="" form-type="submit">付款</button>
+        </view>
+      </view>
+      <view style="text-align: center;color: #666;margin-bottom: 50rpx;" bindtap="openPage" data-url="../personal/wallet">忘记密码？重置密码</view>
+    </form>
+  </view>
+</van-popup>
+
+<van-popup custom-class="flex-cell wallet-popup service-popup" show="{{ isService }}" close-on-click-overlay bind:close="onClose">
+  <view class="popup-head">
+    <view>申请退款</view>
+  </view>
+  <!-- <view class="flex-cell" style="flex: 1;"> -->
+  <form class="flex-cell" bindsubmit="serviceOrder" style="flex: 1;">
+    <view class="flex-cell" style="flex: 1; padding:0 20rpx;justify-content: space-around;">
+      <view class="flex-row" style="padding: 10px 0;">
+        <picker bindchange="changePicker" name="reasonPicker" value="{{reasonIndex}}" range="{{reasonList}}" style="">
+          <view class="picker">
+            <text>退款理由：</text> {{reasonIndex > -1 ? reasonList[reasonIndex] : '请选择'}}
+          </view>
+        </picker>
+      </view>
+      <view class="flex-row" style="padding: 20px 0;">
+        <view>其他</view>
+        <input name="other_reason" value="{{serviceReason}}" type="text" placeholder="请输入退款理由" class="password-input" bindInput="getInput" data-layer="reasonText" />
+      </view>
+    </view>
+    <view class="flex-row popup-foot">
+      <button class="default-botton btn" style="flex: 1;border-right: 1rpx solid #ccc;" bindtap="onClose">取消</button>
+      <button class="default-botton btn" style="flex: 1;" form-type="submit">确定</button>
+    </view>
+  </form>
+  <!-- </view> -->
+</van-popup>

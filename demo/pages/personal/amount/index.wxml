@@ -1,0 +1,24 @@
+<!--pages/personal/amount/index.wxml-->
+<view class="flex-cell container" style="height: 100%;">
+  <view class="main-bg head">
+    <view style="font-size: 28rpx;">十美币余额</view>
+    <view>
+      <text>¥</text>
+      <text style="font-size: 60rpx;">{{allianceData.balance ? allianceData.balance : 0}}</text>
+    </view>
+  </view>
+  <view>
+    <view bindtap="openPage" data-url="./recharge/list" class="flex-row" style="background:#fff; padding: 30rpx 40rpx;justify-content: space-between;">
+      <view>充值记录</view>
+      <view class="right-arrow"></view>
+    </view>
+    <view bindtap="openPage" data-url="./cash-out/list" class="flex-row" style="background:#fff; padding: 30rpx 40rpx;justify-content: space-between;margin-top: 20rpx;">
+      <view>提现记录</view>
+      <view class="right-arrow"></view>
+    </view>
+  </view>
+  <view class="flex-cell btn-view" style="flex:1;">
+    <view class="btn" style="background: #5aab44;" hover-class="hoverView" bindtap="openPage" data-url="./recharge/index">充值</view>
+    <view class="btn" style="background: #827f7f;" hover-class="hoverView" bindtap="openPage" data-url="./cash-out/index">提现</view>
+  </view>
+</view>

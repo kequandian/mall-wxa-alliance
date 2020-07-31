@@ -1,0 +1,35 @@
+<!--pages/alliance/list.wxml-->
+<view class="container">
+  <view class="fixed-top" style="">
+    <view class="flex-row" style="padding: 15rpx; background: #e9eeee;">
+      <image style="height: 60rpx; width: 60rpx; margin-right: 20rpx;" src="../../images/ream_Recommend.png"></image>
+      <view class="main-bg" style="font-size: 26rpx; padding: 2rpx 18rpx;">{{ alliancList.length }}人</view>
+    </view>
+      <view class="search-row" style="">
+    <input type="text" bindconfirm="bindinput" confirm-type="search" placeholder="搜索您要对接的资源" placeholder-style="font-size: 26rpx;">
+      <image class="search-icon" mode="widthFix" src="../../images/search.png"></image>
+    </input>
+  </view>
+  </view>
+  
+  <!-- <view class="search-row" style="padding-top:135rpx">
+    <input type="text" bindconfirm="bindinput" confirm-type="search" placeholder="搜索您要对接的资源" placeholder-style="font-size: 26rpx;">
+      <image class="search-icon" mode="widthFix" src="../../images/search.png"></image>
+    </input>
+  </view> -->
+  <view class="list" wx:if="{{ alliancList.length }}" style="padding-top:200rpx">
+    <view wx:for="{{ alliancList }}" wx:key="{{item.id}}" class="flex-row list_item" bindtap="openPage" data-url="../personal/team/profile?id={{item.id}}">
+      <view class="flex-row">
+        <!-- <image class="avatar" src="../../images/default_avatar.png"></image> -->
+        <image class="avatar" src="{{item.wechatAvatar}}"></image>
+        <view>
+          <view style="font-size: 28rpx;">{{item.allianceName}}</view>
+          <view style="font-size: 24rpx;">加入时间：{{item.creationTime ? item.creationTime : ''}}</view>
+        </view>
+      </view>
+      <view class="right-arrow" style="margin-right:20rpx;"></view>
+    </view>
+    <view style="text-align:center; font-size: 24rpx;padding-top: 20rpx;" wx:if="{{ alliancList.length && total_page === pageNum }}">已加载全部</view>
+  </view>
+  <view class="no-data" wx:else>暂无数据</view>
+</view>

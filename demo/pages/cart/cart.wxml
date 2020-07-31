@@ -1,0 +1,60 @@
+<!--cart.wxml-->
+<view class="borderView">   </view>
+<view class="container">
+	<view class="vacant-cart" wx:if="{{ productList.length == 0}}">
+		<image class="vacantImg" src="../../images/cart.jpg"></image>
+		<view class="varcan-textView">
+			<text class="vacant-text1">购物车怎么空了呢</text>
+			<text class="vacant-text2">快点去帮我添点东西吧</text>
+		</view>
+		<button class="vacant-button" bindtap="openPage" data-url="../category/category" data-open-type="switchTab">随便逛逛</button>
+	</view>
+	
+	<view class="carts" wx:if="{{ productList.length > 0}}">
+			<view wx:for="{{ productList }}" class="cart-contItem"  >
+				<view class="productItem" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" data-index="{{index}}" style="left: {{itemLefts[index]}}rpx">
+					<!-- <view class="left-item" > -->
+						<!-- <image bindtap="select" data-select-index="{{index}}" class="selectIcon" src="../../images/{{ selected==index?'select_yes.png':'select_no.png' }}" /> -->
+						<icon class="icon" type="{{ selectIcon[index]?'success_circle':'circle' }}" size="20" catchtap="selectProduct" data-product-id="{{item.product_id}}" data-spec-id="{{item.product_specification_id}}" data-index="{{index}}"/>	
+            <!-- <block wx:if="{{item.product_specification_id}}">
+              <icon class="icon" type="{{ selCartJson[item.product_id] && selCartJson[item.product_id+'-'+item.product_specification_id]}}?'success_circle':'circle' }}" size="20" catchtap="selectProduct" data-product-id="{{item.product_id}}" data-spec-id="{{item.product_specification_id}}" data-index="{{index}}"/>
+            </block>
+						<icon wx:else class="icon" type="{{ selCartJson[item.product_id}}?'success_circle':'circle' }}" size="20" catchtap="selectProduct" data-product-id="{{item.product_id}}" data-spec-id="{{item.product_specification_id}}" data-index="{{index}}"/>	 -->
+					<!-- </view> -->
+					<view class="item-main" bindtap="getDetails" data-id="{{ item.product_id }}">
+
+						<image class="cover" src="{{ item.cover }}" />
+					<view class="right-item">
+						
+						<text class="product_name">{{ item.product_name }} </text>
+						<view class="price-num">
+							<text class="price">￥{{ item.price }}</text>
+							<view class="num-view">
+								<text class="numButton" disabled="{{ item.quantity==1?true:false }}" catchtap="reduce" data-index="{{ index }}" >-</text>
+								<!-- <view class="numbutton" bindtap="reduce">-</view> -->
+								<input type="number" catchtap="prevent" catchchange="changeInput" data-index="{{ index }}" value="{{ item.quantity }}" />
+								<text class="numButton" disabled="{{  }}" catchtap="add" data-index="{{ index }}">+</text>
+								<!-- <view class="numbutton" bindtap="add">+</view> -->
+							</view>
+						</view>
+					</view>
+					</view>
+					
+				</view>
+				<button type="warn" class="delete-button" catchtap="delButton"  data-index="{{index}}">删除</button>
+			</view>
+	</view>
+	<view class="carts-footer">
+		<view class="foorer-text">
+			<!-- <image class="select_all" src="../../images/select_no.png" />
+			<text class="select_all_link">全选</text> -->
+			<!-- <checkbox bindtap="allSelect" checked="{{ allSelect }}">全选</checkbox> -->
+			<icon bindtap="allSelect" type="{{ allSelect?'success_circle':'circle' }}" size="20"/>
+			<text>全选</text>
+			<text class="total">合计:</text>
+			<text class="payment">￥{{ payment }}</text>
+		</view>
+    <!-- <van-button class="cart-button" catchtap="buyNow">去结算</van-button> -->
+		<view class="cart-button" catchtap="buyNow" style="opacity:{{selectNum>0?1:0.5}}">去结算</view>
+	</view>
+</view>

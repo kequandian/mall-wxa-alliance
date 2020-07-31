@@ -1,0 +1,107 @@
+<view class="container">
+  <view class="prompt">
+    注意：申请退货后请等待平台确认，申请通过后请填写快递单号
+  </view>
+  <!-- <view wx:if="{{!formData.service_type}}">
+    <view bindtap="selService" data-service-type="REFUND">我要退款(无需退货)</view>
+    <view bindtap="selService" data-service-type="RETURN">我要退款退货</view>
+    <view bindtap="selService" data-service-type="EXCHANGE">我要换货</view>
+  </view> -->
+  <block wx:if="{{formData.service_type}}">
+    <view class="goods">
+      <view class="item-good " wx:for="{{order.order_items}}" wx:key="{{item.id}}">
+        <image class="good-cover " src="{{item.cover}} "></image>
+        <view class="good-right ">
+          <text class="good-name ">{{item.product_name}}</text>
+          <view class="number-view flex-row " style="justify-content: space-between; ">
+            <text class="main-color ">￥{{item.price}}</text>
+            <text>x {{item.quantity}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+    <form bindsubmit="formSubmit ">
+      <view class="flex-row besides-row ">
+        <label>退款说明：</label>
+        <input name="back-text " type="text " placeholder="请输入退款说明" />
+      </view>
+      <view class="flex-row besides-row ">
+        <label>退款金额：</label>
+        <input name="back-price " type="digit " value="{{}}" placeholder="请输入退款金额" />
+      </view>
+      <view class="flex-row besides-row prompt-price ">
+        最多￥{{order.origin_price}}
+      </view>
+      <view class="flex-row besides-row ">
+        <label>备注：</label>
+        <input name="remark " type="text " placeholder="选填 " />
+      </view>
+      <view class="update ">
+        <view class="update-link ">上传凭证</view>
+        <view class="update-body ">
+          <view class="item-update " bindtap="update">
+            <text class="iconfont icon-jia icon-size "></text>
+            <!-- <view class="close " >x</view> -->
+          </view>
+          <view class="item-update " wx:for="{{apply.goods}}" wx:key="*this">
+            <image mode="aspectFill " src="{{item.img}} "></image>
+            <view class="close " bindtap="delImg " data-index="{{index}} ">x</view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="apply-status " wx:if="{{apply.status==1 }} ">
+        <view>申请状态：</view>
+        <view class="status-success ">通过</view>
+      </view>
+      <view class="apply-status " wx:if="{{apply.status==2 }} ">
+        <view>申请状态：</view>
+        <view class="status-error ">未通过</view>
+      </view> -->
+      <view class="foot-row ">
+        <button wx:if="{{apply.status!=1}} " class="default-botton main-bg btn " form-type="submit ">申请退货</button>
+        <button wx:else class="default-botton main-bg btn " bindtap="showPopup ">填写快递单号</button>
+        <!-- <button class="default-botton main-bg btn " form-type="submit ">提交</button> -->
+        <!-- <view class="main-bg add-btn " bindtap="openPage " data-url="./add ">添加朋友</view> -->
+      </view>
+
+    </form>
+  </block>
+</view>
+
+<view class="opacity-view" wx:if="{{showPopup}}" bindtap="closePopup" data-title="closePopup"></view>
+<view class="showPopup" wx:if="{{showPopup}}">
+  <view class="popup-head">
+    <view class="popup-title">填写快递单号</view>
+    <text bindtap="closePopup" class="iconfont icon-guanbi close-icon "></text>
+  </view>
+  <view class="popup-row ">
+    <view class="popup-link ">快递公司：</view>
+    <input type="text " class="express-name " />
+  </view>
+  <view class="popup-row ">
+    <view class="popup-link ">快递单号：</view>
+    <input type="text " class="express-num " />
+  </view>
+  <view class="popup-row ">
+    <view class="popup-btn main-bg ">确定</view>
+  </view>
+</view>
+<van-popup show="{{ !formData.service_type }}" position="left" custom-style="height: 100%;width: 100%;" duration="0" bind:close="onClose">
+  <view class="service-popup">
+
+    <view class="flex-row besides-row" style="justify-content: space-between;" bindtap="selService" data-service-type="REFUND">
+      <view>我要退款(无需退货)</view>
+      <view class="right-arrow"></view>
+    </view>
+    <view class="flex-row besides-row" style="justify-content: space-between;" bindtap="selService" data-service-type="RETURN">
+      <view>我要退款退货</view>
+      <view class="right-arrow"></view>
+    </view>
+    <view class="flex-row besides-row" style="justify-content: space-between;" bindtap="selService" data-service-type="EXCHANGE">
+      <view>我要换货</view>
+      <view class="right-arrow"></view>
+    </view>
+  </view>
+</van-popup>
+<!-- <view class="closePopup " wx:if="{{showPopup}} " bindtap="closePopup " data-title="closePopup ">×</view> -->

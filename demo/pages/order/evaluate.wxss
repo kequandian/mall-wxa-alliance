@@ -1,0 +1,64 @@
+
+@import "../../utils/template/common.wxss";
+
+.container {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90rpx;
+    border-top: 2rpx solid #F2F2F2; */
+}
+.form-products {
+    padding-bottom: 90rpx;
+}
+.product-item {
+    padding: 0 20rpx;
+    border-bottom: 20rpx solid #F2F2F2;
+}
+
+.item-head {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+    border-bottom: 2rpx solid #e5e5e5;
+}
+.product-cover {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.head-link {
+    color: #505050;
+    font-size: 30rpx;
+}
+.product-item textarea {
+    padding: 30rpx 0;
+    width: 100%;
+    margin: auto;
+}
+
+.upload-imgs {
+    display: flex;
+    flex-wrap: wrap;
+}
+.upload-item {
+    width: 150rpx;
+    height: 150rpx;
+    margin-right: 20rpx;
+}
+
+.foot-view {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90rpx;
+    /*height: 100rpx;*/
+}
+
+.foot-btn {
+    border-radius: 0;
+    height: 90rpx;
+}

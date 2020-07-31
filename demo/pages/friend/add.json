@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "朋友",
+  "usingComponents": {
+    "van-cell-group": "../../utils/vant/cell-group/index",
+    "van-field": "../../utils/vant/field/index"
+  }
+}

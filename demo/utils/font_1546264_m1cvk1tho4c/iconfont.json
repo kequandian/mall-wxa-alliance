@@ -1,0 +1,16 @@
+{
+  "id": "1546264",
+  "name": "私域",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1325982",
+      "name": "我的宝贝页_更换",
+      "font_class": "genghuan",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    }
+  ]
+}

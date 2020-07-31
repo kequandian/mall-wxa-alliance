@@ -1,0 +1,19 @@
+<view class="container">
+  <view wx:if="{{list.length}}">
+    <view wx:for="{{list}}" wx:key="{{item.id}}">
+      <view class="list-item">
+        <view style="color: #666;font-size:28rpx;">
+          <!-- <view wx:if="{{item.account_type ==='WALLET'}}">转入钱包</view> -->
+          <!-- <view wx:elif="{{item.account_type ==='WECHAT'}}">提现至微信零钱</view> -->
+          <view wx:if="{{item.note}}">{{item.note}}</view>
+          <view>{{item.apply_time || ''}}</view>
+        </view>
+        <view style="display: flex;align-items: flex-end;line-height:1;">
+          <text style="font-size: 24rpx;">提现金额：</text>
+          <view class="main-color-2" style="font-size: 50rpx;">¥{{item.cash}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="no-data" wx:else>暂无数据</view>
+</view>

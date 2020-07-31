@@ -1,0 +1,153 @@
+<!--pages/addOrder/addOrder.wxml-->
+
+<!--order-details.wxml-->
+<view class="container" animation="{{ OREanimationData }}">
+
+  <view class="contact" catchtap="setAddress">
+  
+    <image mode="widthFix" class="addressImg" src="../../images/order-address.png"></image>
+    <view class="contact-main" wx:if="{{selFriend}}">
+      <view class="people">
+        <text>{{ selFriend.name }}</text>
+        <text>{{ selFriend.contactPhone }}</text>
+      </view>
+      <view class="address">
+        {{ selFriend.pcdProvince }} {{ selFriend.pcdCity }} {{ selFriend.pcdDistinct }} {{ selFriend.address }}
+      </view>
+    </view>
+    <view class="contact-main" wx:elif="{{address}}">
+      <view class="people">
+        <text>{{ address.contact_user }}</text>
+        <text>{{ address.phone }}</text>
+      </view>
+
+      <view class="address">
+        {{address.province}} {{address.city}} {{address.district}} {{address.detail}}
+      </view>
+    </view>
+    <view class="contact-main" wx:else>请选择收货地址</view>
+    <image class="arrowright" src="../../images/arrowright.png" />
+  </view>
+
+  <view class="productList">
+    <view wx:for="{{products}}"  class="item-product" bindtap="getDetails" data-id="{{ item.id }}">
+      <image src="{{ item.cover }}" />
+      <view>
+        <view class="product-name">
+          {{item.name}}
+        </view>
+        <view class="number-view">
+          <text class="price">￥{{ judgeAlliances ? item.price : item.suggested_price}}</text>
+          <text class="quantity">x {{ item.quantity }}</text>
+          <!-- <view class="quantity-view">
+            <text class="quantity-button" catchtap="reduce" data-index="{{index}}">-</text>
+            <input type="number" catchchange="changeInput" data-index="{{index}}" value="{{ item.quantity }}" />
+            <text class="quantity-button" catchtap="add" data-index="{{index}}">+</text>
+          </view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="delivery-way">
+    <!-- <view class="row">
+      <radio-group class="radio-group" bindchange="selOrderType">
+      <radio class="radio" value="1" checked="{{orderType === 1}}">
+        <text>自己下单</text>
+      </radio>
+      <radio class="radio" value="2" checked="{{orderType === 2}}">
+        <text>为朋友下单</text>
+      </radio>
+    </radio-group>
+    </view> -->
+    <view class="row">
+      <text>配送方式</text>
+      <text class="delivery">快递 </text>
+      <span wx:if="{{carriage>0}}">￥{{carriage}}</span>
+      <span wx:else="{{carriage==0}}">免邮</span>
+    </view>
+  </view>
+  <view class="discount">
+    <view class="coupon">
+      <text>优惠券</text>
+      <text class="coupon-num">无可用</text>
+      <image class="arrowright" src="../../images/arrowright.png" />
+    </view>
+    <!-- <view class="integral">
+      <text>可用100积分抵用1元</text>
+      <switch bindchange="integral" name="integral" />
+    </view> -->
+  </view>
+  <input type="text" bindinput="getRemark" class="remark" placeholder="买家留言" />
+  <view class="bill">
+    <view class="bill-item">
+      <text>商品金额</text>
+      <view>￥{{product_price}}</view>
+    </view>
+    <view class="bill-item">
+      <text>运费</text>
+      <view>+￥{{carriage}}</view>
+    </view>
+    <view class="bill-item">
+      <text>积分</text>
+      <view>-￥{{credit_offset}}</view>
+    </view>
+    <view class="payment">
+      <text>实付金额</text>
+      <view>￥{{total_price}}</view>
+    </view>
+    <button class="main-bg addOrder-btn" hover-class="hoverView" bindtap="addOrder">提交订单</button>
+  </view>
+</view>
+<van-popup custom-class="address-popup" show="{{ showAddresList }}" bind:close="onClose" position="bottom" safe-area-inset-top closeable>
+  <view class="popup-head">选择收获地址</view>
+  <view class="address-list" >
+    <view bindtap="selectAddress" class="item-address" wx:for="{{ addressArr }}" data-index="{{index}}">
+      <view class="address-main">
+        <view class="user">
+          <view class="name">{{ item.contact_user }}</view>
+          <view class="phone">{{ item.phone }}</view>
+          <text class="default" wx:if="{{ item.is_default==1 }}">默认地址</text>
+        </view>
+        <view class="address-text">{{ item.province }} {{ item.city }} {{ item.district }} {{ item.detail }}</view>
+      </view>
+    </view>
+  </view>
+  <button class="add-Address" style="" bindtap="openPage" data-url="../setAddress/setAddress">添加地址</button>
+</van-popup>
+<van-popup custom-class="flex-cell wallet-popup" show="{{ isWalletPay }}" close-on-click-overlay bind:close="onClose">
+<view class="popup-head">
+    <view>输入支付密码</view>
+  </view>
+  <view class="flex-cell" style="flex: 1;">
+    <form class="flex-cell" bindsubmit="walletPay">
+      <view style="flex: 1; padding:40rpx 20rpx; ">
+        <view class="flex-row">
+          <!-- <view>密码</view> -->
+          <input name="password" value="{{passwordInput}}" type="text" placeholder="请输入钱包支付密码" password class="password-input" />
+          <button class="default-botton main-bg wallet-btn" hover-class="hoverView" style="" form-type="submit">付款</button>
+        </view>
+      </view>
+      <view style="text-align: center;color: #666;margin-bottom: 50rpx;" bindtap="openPage" data-url="../personal/wallet?order_number={{order_number}}" data-open-type="redirect">忘记密码？重置密码</view>
+    </form>
+  </view>
+</van-popup>
+<!-- <view class="addressArr" animation="{{ ADDanimationData }}" >
+	 <view bindtap="selectAddress" class="item-address" wx:for="{{ addressArr }}" data-index="{{index}}"> -->
+<!-- <icon class="icon" type="{{ selectIcon[index]?'success_circle':'circle' }}" size="20" background-color="red" catchtap="selectAddress" data-index="{{index}}" /> -->
+<!-- <radio class="radio" catchtap="default"  data-index="{{index}}" checked="{{ item.is_default?true:false }}"></radio> -->
+<!-- <view class="address-main">
+				<view class="user">
+					<view class="name">{{ item.contact_user }}</view>
+					<view class="phone">{{ item.phone }}</view>
+					<text class="default" wx:if="{{ item.is_default==1 }}">默认地址</text>
+
+				</view>
+				<view class="address-text">{{ item.province }} {{ item.city }} {{ item.district }} {{ item.detail }}</view>
+				
+			</view> -->
+<!-- 			<view class="img">
+				<image class="arrowright" src="../../images/arrowright.png" ></image>	
+			</view> -->
+<!-- </view>
+	<button class="add-Address" style="width:{{buttonWidth}} height:{{buttonHeight}}" bindtap="addAddress" type="primary" >添加地址</button>
+</view> -->

@@ -1,0 +1,33 @@
+/* pages/personal/team/index.wxss */
+.team-num {
+  background: #eaedee;
+  padding: 30rpx;
+  color: #666;
+  border-bottom: 1rpx solid #666;
+}
+.team-num image {
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: 20rpx;
+}
+.team-num text {
+  background: #d23f3a;
+  color: #fff;
+  padding: 0 8rpx;
+  border-radius: 8rpx;
+}
+
+
+.item-team {
+  color: #666;
+  border-bottom: 1rpx solid #ccc;
+  padding: 20rpx;
+  font-size: 28rpx;
+  justify-content: space-between;
+}
+
+.item-team image {
+  height: 80rpx;
+  width: 80rpx;
+  margin-right: 20rpx;
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "好友信息",
+  "usingComponents": {
+    "van-collapse": "../../utils/vant/collapse/index",
+    "van-collapse-item": "../../utils/vant/collapse-item/index"
+  }
+}

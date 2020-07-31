@@ -1,0 +1,64 @@
+<wxs src="../wxs/utils.wxs" module="utils" />
+
+<view class="custom-class {{ utils.bem('steps', [direction]) }}">
+  <view class="van-step__wrapper">
+    <view
+      wx:for="{{ steps }}"
+      wx:key="index"
+      class="{{ utils.bem('step', [direction, status(index, active)]) }} van-hairline"
+    >
+      <view class="van-step__title" style="{{ index === active ? 'color: ' + activeColor : '' }}">
+        <!-- <view>{{ item.text }}</view>
+        <view>{{ item.desc }}</view> -->
+        <!-- <view wx:if="{{item.action_type === 100001}}">【揽件成功】</view>
+        <view wx:elif="{{item.action_type === 100002}}">【揽件失败】</view>
+        <view wx:elif="{{item.action_type === 100003}}">【分配业务员】</view>
+        <view wx:elif="{{item.action_type === 200001}}">【运输阶段-更新运输轨迹】</view>
+        <view wx:elif="{{item.action_type === 300002}}">【派送阶段-开始派送】</view>
+        <view wx:elif="{{item.action_type === 300003}}">【派送阶段-签收成功】</view>
+        <view wx:elif="{{item.action_type === 300004}}">【派送阶段-签收失败】</view>
+        <view wx:elif="{{item.action_type === 400001}}">【异常阶段-订单取消】</view>
+        <view wx:elif="{{item.action_type === 400002}}">【异常阶段-订单滞留】</view> -->
+        <!-- <view>{{item.action_msg}}</view> -->
+        <!-- <view>{{item.action_time_s}}</view> -->
+        <view>{{item.context}}</view>
+        <view>{{item.time}}</view>
+      </view>
+      <view class="van-step__circle-container">
+        <block wx:if="{{ index !== active }}">
+          <van-icon
+            wx:if="{{ inactiveIcon }}"
+            color="#969799"
+            name="{{ inactiveIcon }}"
+            custom-class="van-step__icon"
+          />
+          <view
+            wx:else
+            class="van-step__circle"
+            style="{{ index < active ? 'background-color: ' + activeColor : '' }}"
+          />
+        </block>
+
+        <van-icon wx:else name="{{ activeIcon }}" color="{{ activeColor }}" custom-class="van-step__icon" />
+      </view>
+      <view
+        wx:if="{{ index !== steps.length - 1 }}"
+        class="van-step__line" style="{{ index < active ? 'background-color: ' + activeColor : '' }}"
+      />
+    </view>
+  </view>
+</view>
+
+<wxs module="status">
+function get(index, active) {
+  if (index < active) {
+    return 'finish';
+  } else if (index === active) {
+    return 'process';
+  }
+
+  return '';
+}
+
+module.exports = get;
+</wxs>

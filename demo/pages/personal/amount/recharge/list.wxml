@@ -1,0 +1,19 @@
+<!--pages/personal/amount/recharge.wxml-->
+<view class="container">
+  <view wx:if="{{list.length}}">
+    <view wx:for="{{list}}" wx:key="{{item.id}}">
+      <view class="list-item">
+        <view style="color: #666;font-size:28rpx;">
+          <!-- <view>{{item.type}}</view> -->
+          <view>{{item.created_time}}</view>
+        </view>
+        <view style="display: flex;align-items: flex-end;line-height:1;">
+          <text style="font-size: 24rpx;" wx:if="{{ item.type === 'CHARGE' }}">充值金额：</text>
+          <text style="font-size: 24rpx;" wx:if="{{ item.type === 'PAY' }}">消费金额：</text>
+          <view class="main-color-2" style="font-size: 50rpx;">¥{{item.amount}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="no-data" wx:else>暂无数据</view>
+</view>

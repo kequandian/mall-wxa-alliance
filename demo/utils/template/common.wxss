@@ -1,0 +1,163 @@
+/*-----------scroll-x-nav导航样式结束-------------*/
+
+.scroll-x-category {
+    display: inline-block;
+    /*width: 100%;*/
+    flex-direction: row;
+    white-space: nowrap;
+    color: #333333;
+    font-size: 28rpx;
+    overflow-x: scroll;
+    padding-top: 20rpx;
+    /* height: 100rpx; */
+}
+
+.item-category {
+    padding: 10rpx 0;
+    margin: 0 20rpx;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+}
+.category-light {
+    /* color: #c28324;
+    border-bottom: 6rpx solid #c28324; */
+    background: #969798;
+    color: #fff;
+    padding: 5rpx 20rpx;
+    border-radius: 20rpx;
+}
+
+/*-----------scroll-x-nav导航样式结束-------------*/
+
+/*----login---- */
+.wx-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.8);
+}
+
+.popup-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    max-width: 700rpx;
+    border-radius: 10rpx;
+    box-sizing: bordre-box;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background: #FFF;
+    padding: 25rpx;
+}
+.login {
+    width: 75%;
+}
+
+.login-close-popup {
+    background: #fff;
+    opacity: 0.7;
+    border-radius: 50%;
+    color: #565656;
+    line-height: 20px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    font-size: 18px;
+    padding: 20rpx;
+    /*float: right;*/
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.login-close-popup:before {
+    content: "\2716";
+}
+
+.login .float_tab {
+    width: 100%;
+    color: #000000;
+    font-size: 15px;
+    line-height: 1.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+
+.login .float_tab .info1 {
+    color: #000000;
+    font-size: 16px;
+    line-height: 2;
+    text-indent: 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.login .float_tab .info2 {
+    color: #000000;
+    font-size: 14px;
+    line-height: 1.8;
+    text-indent: 40rpx;
+}
+
+.login .float_tab .info3 {
+    color: #000000;
+    font-size: 14px;
+    line-height: 1.8;
+    text-indent: 40rpx;
+    border-bottom: 1px rgba(0, 0, 0, 0.15) solid;
+    padding-bottom: 20rpx;
+}
+
+.login .float_tab .info4 {
+    color: #333;
+    font-size: 30rpx;
+    line-height: 1.8;
+    text-indent: 40rpx;
+    margin-top: 20rpx;
+}
+
+.login .float_tab image {
+    width: 100%;
+    border-radius: 20rpx;
+}
+
+.login .float_button {
+    /*  top:70%;
+  left: 50rpx;
+  right: 50rpx;
+  margin:0rpx;
+  position: absolute;*/
+}
+
+.login .float_button button {
+    background-color: #d23f3a;
+    color: #fff;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 2px;
+    font-size: 16px;
+    line-height: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* -----star-evaluate五星评价-----------*/
+.star-view {
+    display: flex;
+}
+.star-img {
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: 20rpx;
+}
+/* -----star-evaluate五星评价-----------*/

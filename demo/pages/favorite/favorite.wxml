@@ -1,0 +1,24 @@
+<!--favorite.wxml-->
+
+<view class="container">
+	
+	<view class="favoriteList" wx:for="{{ favoriteArr }}" >
+		<view class="item-favorite" bindtap="getDetails" data-id="{{ item.id }}">
+			<view class="favorite-mian" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" data-index="{{index}}" style="left: {{itemLefts[index]}}rpx">
+				<image src="{{ item.cover }}"></image>
+				<view class="product-text">
+					<text>{{ item.short_name }}</text>
+					<view class="price-num">
+						<text class="price">￥{{ item.price }}</text>
+						<view class="stock_balance">库存：{{ item.stock_balance }}</view>
+						<view class="favorite-cart" catchtap="addCart" data-id="{{ item.id }}">
+							<image src="../../images/favorite-cart.png"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+			<button type="warn" class="item-button" catchtap="delButton"  data-id="{{ item.id }} ">删除</button>
+		</view>
+	</view>
+
+</view>

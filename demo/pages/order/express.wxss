@@ -1,0 +1,127 @@
+
+view {
+  overflow: visible;
+}
+.container {
+  padding-top: 40rpx;
+  color: #666;
+}
+.more-tag {
+  text-align: center;
+  padding: 10rpx;
+  font-size: 24rpx;
+  display: inline;
+  margin: 30rpx;
+  border-radius: 15rpx;
+}
+.contact {
+  padding: 30rpx;
+	background-color: #fff;
+	color: #666;
+	border-bottom: 2rpx solid #EFEEF4;
+}
+.addressImg {
+	width: 40rpx;
+	height: 40rpx;
+	margin-right: 10rpx;
+}
+.contact-main {
+  margin-left: 50rpx;
+}
+.people {
+	margin: 20rpx 0 ;
+	font-size: 34rpx;
+}
+.people text {
+	margin-right: 50rpx;
+}
+.address {
+	font-size: 26rpx;
+	width: 520rpx;
+	margin-bottom: 20rpx;
+	color: #868688;
+}
+.express-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+.item-express {
+  width: 100rpx;
+  background: #f0f0f0;
+  color: #333;
+  text-align: center;
+  margin: 10rpx;
+  border-radius: 10rpx;
+}
+.hightExpress {
+  background: #e79b37;
+  color: #fff;
+}
+
+.express-row {
+    display: flex;
+    flex-direction: column;
+    color: #505050;
+    font-size: 30rpx;
+    padding: 30rpx 0 30rpx 80rpx;
+	border-bottom: 2rpx solid #EFEEF4;
+}
+.express-name {
+    margin-right: 50rpx;
+}
+
+/* .express-link {
+    color: #505050;
+    font-size: 32rpx;
+    padding: 30rpx;
+} */
+
+.item-node {
+    display: flex;
+    font-size: 30rpx;
+    color: #505050;
+}
+
+.left-node {
+    width: 200rpx;
+    text-align: center;
+}
+.node-time {
+    color: #a6a6a6;
+    font-size: 28rpx;
+}
+
+.right-node {
+    /*border-left: 4rpx solid green;*/
+    padding-left: 50rpx;
+    position: relative;
+    padding-bottom: 30rpx;
+    flex: 1;
+    margin-right: 30rpx;
+}
+
+.right-node:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2rpx;
+    background-color: #d9d9d9;
+}
+
+.node-icon {
+    position: absolute;
+    left: -13rpx;
+    top: 0;
+    width: 20rpx;
+    height: 20rpx;
+    background-color: #bfdff5;
+    border-radius: 50%;
+    border: 6rpx solid #FFF;
+}
+
+.sign-in {
+    background-color: #efb1c3;
+}

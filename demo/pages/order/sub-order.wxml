@@ -1,0 +1,253 @@
+<view class="contaicer">
+    <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+    <view wx:if="{{addressIndex>=0}}" class="address" bindtap="goAddress" data-mask-type="address">
+        <text class="iconfont icon-dizhi address-icon"></text>
+        <view class="address-body">
+            <view>{{address.contact_user}} {{address.phone}}</view>
+            <view>{{address.province}} {{address.city}} {{address.city}} {{address.detail}}</view>
+        </view>
+        <view class="right-arrow"></view>
+    </view>
+    <view wx:else class="address" bindtap="goAddress" data-mask-type="address">
+        <text class="iconfont icon-dizhi address-icon"></text>
+        <view>您暂未设置收货地址</view>
+        <view class="right-arrow"></view>
+    </view>
+
+    <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+
+    <view class="products">
+        <view wx:for="{{products}}" class="item-product">
+            <image class="product-cover" src="{{item.cover}}" mode="aspectFill"></image>
+            <view class="product-right">
+                <view>{{item.name}}</view>
+                <view class="flex-view">
+                    <view class="product-price main-color">￥{{item.price}}</view>
+                    <view class='product-num'>x {{item.quantity}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+    <view class="flex-row">
+        <view class="row-link">配送方式</view>
+        <view class="row-right" bindtap="chanMask" data-mask-type="way">
+            <view class="row-value">{{wayText}}</view>
+            <view class="right-arrow"></view>
+        </view>
+    </view>
+    <view class="flex-row border-top" wx:if="{{store}}">
+        <view class="item-store">
+            <image mode="aspectFill" class="store-cover" src="{{store.avatar}}"></image>
+            <view class="store-right">
+                <view class="store-name">{{store.name}}</view>
+                <view class="store-address">{{store.province}} {{store.city}} {{store.district}} {{store.address}}</view>
+                <view class="store-area">
+                    <view class="area main-color">{{store.district}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- <view class="flex-row border-top">
+        <view class="row-link">优惠券</view>
+        <view class="row-right" bindtap="goCoupon" data-mask-type="coupon">
+            <view wx:if="{{couponIndex!=-1}}" class="row-value main-color">{{coupon.coupon_name}}</view>
+            <view wx:if="{{couponIndex==-1}}" class="row-value">不使用优惠券</view>
+            <view wx:if="{{couponIndex==-2}}" class="row-value">无优惠券</view>
+            <view class="right-arrow"></view>
+        </view>
+    </view> -->
+    <view class="flex-row border-top" bindtap="showCoupon" data-mask-type="coupon">
+        <view class="row-link">优惠券</view>
+        <!-- <view class="row-right" bindtap="goCoupon" data-mask-type="coupon"> -->
+        <view class="row-right">
+            <view wx:if="{{couponList.length}}" class="row-value main-color">
+                <block wx:if="{{couponIndex>=0}}">
+                    {{couponList[couponIndex].title?couponList[couponIndex].title:''}}
+                    <!-- <block wx:if="{{couponList[couponIndex].c_type=='full'}}">
+						-￥{{couponList[couponIndex].worth}}
+					</block>
+					<block wx:elif="{{couponList[couponIndex].c_type=='discount'}}">
+						{{couponList[couponIndex].discount}}折
+					</block> -->
+                </block>
+                <block wx:else>{{couponList.length}}张可用</block>
+            </view>
+            <view wx:if="{{!couponList.length}}" class="row-value main-color">无优惠券</view>
+            <view class="right-arrow"></view>
+        </view>
+    </view>
+    <view class="flex-row border-top" wx:if="{{users.grade.creditCashPlanEnabled==1}}">
+        <view class="row-link">积分</view>
+        <switch bindchange="creditSwitch" color="#c28324" />
+    </view>
+    <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+    <view class="flex-row">
+        <input class="remark" bindinput="getRemark" type="text" placeholder="留言" />
+    </view>
+    <view style="background-color:#F6F7FB;width:100%;height:20rpx"></view>
+    <view class="census">
+        <view class="flex-row">
+            <view class="row-link">商品金额</view>
+            <view class="row-value">￥{{product_price}}</view>
+        </view>
+        <view class="flex-row">
+            <view class="row-link">运费</view>
+            <view class="row-value">￥{{carriage}}</view>
+        </view>
+        <view class="flex-row" wx:if="{{users.grade.creditCashPlanEnabled==1}}">
+            <view class="row-link">积分</view>
+            <view class="row-value">￥{{credit_offset}}</view>
+        </view>
+        <!-- <view class="flex-row" wx:if="{{couponIndex>=0}}">
+            <view class="row-link">优惠</view>
+            <view class="row-value">￥{{coupon_price}}</view>
+        </view> -->
+        <!-- <view class="flex-row">
+            <view class="row-link">优惠券</view>
+            <view class="row-value"></view>
+        </view> -->
+        <view class="flex-row border-top">
+            <view class="row-link">实付金额</view>
+            <view class="row-value payment main-color">￥{{total_price}}</view>
+        </view>
+    </view>
+</view>
+<view class="sub-view" bindtap="sub">提交订单</view>
+
+<view class="address-view {{isAddress?'address-show':''}}">
+    <view wx:if="{{addressList.length==0}}" class="no-address">
+        <image src="../../images/no_address.png"></image>
+        <view>您还没有添加收货地址</view>
+    </view>
+
+    <view class="address-list">
+        <radio-group bindchange="radioChange">
+            <view class="item-address" wx:for="{{addressList}}">
+                <view class="item-body" style="left: {{leftList[index]}}rpx">
+                    <view class="sel-view" data-index="{{index}}" bindtap="selAddress">
+                        <radio color="#c28324" checked="{{addressIndex==index?'true':''}}" value="{{index}}" />
+                    </view>
+                    <view class="address-text" data-index="{{index}}" bindtap="selAddress">
+                        <view class="users">
+                            <view>{{item.contact_user}}</view>
+                            <view class="phone">{{item.phone}}</view>
+                            <view class="default main-color">{{item.default?'默认':' '}}</view>
+                        </view>
+                        <view class="address-value">{{item.province}} {{item.city}} {{item.district}} {{item.detail}}</view>
+                    </view>
+                    <view class="sel-view" bindtap="edit" data-id="{{item.id}}">
+                        <text class="iconfont icon-bianji main-color font-icon address-icon"></text>
+                    </view>
+                </view>
+                <button class="del-btn" catchtap="delAddress" data-id="{{item.id}}">删除</button>
+            </view>
+        </radio-group>
+    </view>
+    <view class="add-address" bindtap="add">新增收货地址</view>
+</view>
+
+<view class="coupons {{isCoupon?'coupon-show':''}}">
+    <view bindtap="selCoupon" data-coupon-id="{{item.id}}" wx:for="{{coupons}}" class="coupon-item">
+        <view class="left-coupon">
+            <view class="color-view {{item.status==2?'invalid-bg':''}}"></view>
+            <view class="coupon-text">
+                <view>{{item.type}}</view>
+                <view class="describe {{item.status==2?'invalid-font':''}}">{{item.describe}}</view>
+                <view>{{item.date}}</view>
+            </view>
+        </view>
+        <view class="right-coupon {{item.status==2?'invalid-font':''}}">
+            <view>
+                <text>￥</text>
+                <text class="coupon-money ">{{item.money}}</text>
+            </view>
+            <view class="status" wx:if="{{item.status==2}}">
+                <view class="status-text">已过期</view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class="store-slide-up {{isStore?'store-show':''}}">
+    <view class="popup-mask {{isStore?'store-mask-show':''}}" bindtap="chanMask" data-mask-type="store"></view>
+    <view class="storeList {{isStore?'storeList-show':''}}">
+        <view class="popup-head">
+            <view>选择门店</view>
+            <text class="iconfont icon-guanbi close-icon" bindtap="chanMask" data-mask-type="store"></text>
+        </view>
+        <!-- <view style="height: 100rpx;"></view> -->
+        <view class="popup-content">
+            <view bindtap="selSrore" data-index="{{index}}" wx:for="{{storeList}}" class="item-store">
+                <image mode="aspectFill" class="store-cover" src="{{item.avatar}}"></image>
+                <view class="store-right">
+                    <view class="store-name">{{item.name}}</view>
+                    <view class="store-address">{{item.province}} {{item.city}} {{item.district}} {{item.address}}</view>
+                    <view class="store-area">
+                        <view class="area main-color">{{item.district}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="slide-up {{isWay?'slide-up-show':''}}">
+    <!-- {{runAM?'popup-mask-on': '' }} -->
+    <view class="popup-mask {{isWay?'popup-mask-show':''}}" bindtap="chanMask" data-mask-type="way"></view>
+    <!-- {{runAM?'popup-body-on': '' }} -->
+    <view class="popup-body ">
+        <view class="popup-head">
+            <view>选择配送方式</view>
+            <text class="iconfont icon-guanbi close-icon" bindtap="chanMask" data-mask-type="way"></text>
+        </view>
+        <view class="popup-content">
+            <view class="form-row" bindtap="selWay" data-way-Name="EXPRESS">
+                <icon type="{{wayName=='EXPRESS'? 'success' : 'circle' }}" color="#c28324"></icon>
+                <view class="popup-way-link">快递运输</view>
+            </view>
+            <!-- <view class="form-row" bindtap="selWay" data-way-Name="FLASH">
+                <icon type="{{wayName=='FLASH'? 'success' : 'circle' }}" color="#c28324"></icon>
+                <view class="popup-way-link">极速送达</view>
+            </view> -->
+            <view class="form-row" bindtap="selWay" data-way-Name="SELF_PICK">
+                <icon type="{{wayName=='SELF_PICK'?'success':'circle'}}" color="#c28324"></icon>
+                <view class="popup-way-link">自提门店</view>
+            </view>
+            <view class="form-row" wx:if="{{store}}">
+                <view class="item-store">
+                    <image mode="aspectFill" class="store-cover" src="{{store.avatar}}"></image>
+                    <view class="store-right">
+                        <view class="store-name">{{store.name}}</view>
+                        <view class="store-address">{{store.province}} {{store.city}} {{store.district}} {{store.address}}</view>
+                        <view class="store-area">
+                            <view class="area main-color">{{store.district}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <button class="main-bg form-btn" bindtap="confirm">确认</button>
+    </view>
+</view>
+
+<view class="wx-opacity" wx:if="{{showCoupon}}" bindtap='selCoupon' data-index="{{couponIndex}}"></view>
+<view class="coupon-popup" wx:if="{{showCoupon}}">
+    <view class="coupon-head">
+        <view>选择优惠券</view>
+        <view class="close-popup-icon" bindtap='selCoupon' data-index="-1"></view>
+    </view>
+    <view class="coupon-list">
+        <!-- <view class="no-coupon" bindtap='selCoupon' data-index="-1">不使用优惠券</view> -->
+        <view class="item-coupon" wx:for="{{couponList}}" bindtap='selCoupon' data-index="{{index}}">
+            <icon class="coupon-icon" type="{{couponIndex==index?'success':'circle'}}" color="#c28324"></icon>
+            <view class="coupon-title">{{item.title?item.title:''}}</view>
+            <view class="coupon-content" wx:if="{{item.c_type=='full'}}">
+                满{{item.climit}}减{{item.worth}}元
+            </view>
+            <view class="coupon-content" wx:elif="{{item.c_type=='discount'}}">{{item.discount}}折</view>
+        </view>
+    </view>
+</view>

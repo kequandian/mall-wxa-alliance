@@ -1,0 +1,92 @@
+<!--classify.wxml-->
+<import src="../../utils/template/common.wxml" />
+
+<view class="container">
+  <!-- <view class="headerSearch"> 
+    <icon class="search-icon" type="search" size="16" color="black"></icon>
+    <input type="text" bindfocus="OnSearch"  placeholder-class="placeholder" placeholder="请输入你想寻找的商品" />
+    <image src="../../images/search.png"></image>
+  </view> -->
+  <template is="scroll-x-category" data="{{categoryData,lightIndex}}" />
+  <!-- <view class="category-view">
+    <view class="left-view">
+      <view class="left-item {{ lightIndex == index ? 'light': '' }}" wx:for="{{ categoryData }}" bindtap="clickLeft" data-index="{{index}}">{{ item.name }}</view>
+    </view>
+    
+    <view class="right-view">
+    
+    <scroll-view scroll-y="true" style="height:{{screenHeight}}rpx">
+      <view class="right-item" wx:for="{{ categoryData }}" wx:for-index="idxI" wx:for-item="itemI" >
+        <view class="itemI-name">— {{ itemI.name }} —</view>
+        <view class="sub_categories">
+          <view class="sub-item" wx:for="{{ itemI.sub_categories }}" wx:for-item="itemII" wx:for-index="idxII" bindtap="OnSearch" data-id="{{ itemII.id }}" data-name="{{ itemII.name }}">
+            <image class="Img" src="../../images/category{{idxI}}{{idxII}}.png" />
+            <text>{{ itemII.name }}</text>
+          </view>
+        </view>
+        
+      </view>
+    </scroll-view>
+        
+    </view>
+  </view> -->
+  <view class="Recommend">
+    <block wx:for="{{ productList }}" wx:key="{{this}}">
+      <view class="RecommendItem" bindtap="getDetails" data-id="{{ item.id }}">
+        <image class="RecommendImg" src="{{ item.cover }}" mode="aspectFit"></image>
+        <view class="product-name">{{item.name}}</view>
+        <view class="flex-row" style="align-items:flex-end;">
+          <view class="flex-cell tariff" style="padding-left: 0;">
+            <text class="main-color value">¥{{item.suggested_price}}</text>
+            <text class="laber">零售价</text>
+          </view>
+          <view class="flex-cell tariff">
+            <text class="main-color value">¥{{item.distribution_price}}</text>
+            <text class="laber">分销价</text>
+          </view>
+          <block wx:if="{{item.settlementProportions}}" wx:for="{{item.settlementProportions}}" wx:for-item="pItem" wx:key="{{pItem.id}}">
+            <view class="flex-cell tariff" wx:if="{{pItem.type==='ALLIANCE'}}">
+              <text class="main-color value">{{pItem.settlementValue}}</text>
+              <text class="laber">推荐提成</text>
+            </view> 
+            <view class="flex-cell tariff" style="border: none" wx:if="{{pItem.type==='STOCKHOLDER'}}">
+              <text class="main-color value">{{pItem.settlementValue}}%</text>
+              <text class="laber">产品分红</text>
+            </view>
+          </block>
+        </view>
+        <view class="flex-row foot-price">
+          <view class="flex-row">
+            <view style="font-size: 20rpx; color:#333;">盟友价：</view>
+            <view class="main-color-2" style="font-size: 32rpx;">¥{{item.price}}</view>
+          </view>
+          <view class="make-btn">立即购买</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+  <!-- <view class="hit-search">
+    <view class="hit-link">热门搜索：</view>
+    <view class="hitWord">
+      <block wx:for="{{hitWord}}" >
+        <view class="hitWordItem" >{{item.name}}</view>
+      </block>
+    </view>
+  </view> -->
+  <!-- <view class="borderView"></view> -->
+  <!-- <view class="category">
+    
+    <view class="category-link">分类</view>
+    <block wx:for="{{ categoryName }}" wx:for-index="index">
+        
+        <view class="categoryItem">
+          <image src="../../images/{{ categoryImg[index] }}" class="categoryImg" />
+          <text>{{ item.name }}</text>
+        </view>
+
+    </block>
+  </view> -->
+
+</view>

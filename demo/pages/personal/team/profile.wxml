@@ -1,0 +1,61 @@
+<!--pages/personal/team/profile.wxml-->
+<view style="height: 100%;">
+  <form class="form" bindsubmit="updateAlliance">
+    <view class="flex-row">
+      <text class="main-color-2" style="width: 20rpx;margin-left: -20rpx;">*</text><view>姓名：</view>
+      <input name="allianceName" type="text" bindinput="bindinput" data-layer="allianceName" value="{{alliance.allianceName}}" placeholder="{{isSelf?'请输入姓名':'保密'}}" disabled="{{!isSelf}}"/>
+    </view>
+    <view class="flex-row">
+      <text class="main-color-2" style="width: 20rpx;margin-left: -20rpx;">*</text><view>电话：</view>
+      <input name="alliancePhone" type="number" bindinput="bindinput" data-layer="alliancePhone" value="{{alliance.alliancePhone}}" maxlength="11" disabled/>
+    </view>
+    <view class="flex-row">
+      <view>性别：</view>
+      <picker name="allianceSex" bindchange="pickerChange" value="{{alliance.allianceSex}}" range="{{sexArr}}" data-layer="allianceSex" disabled="{{!isSelf}}">
+        <view class="picker">
+          {{ alliance.allianceSex === 1 ? "男" : (alliance.allianceSex === 0 ? "女" : (isSelf ? "请填写性别" : '保密')) }}
+        </view>
+      </picker>
+    </view>
+    <!-- <view class="flex-row">
+      <view>出生日期：</view>
+      <picker name="allianceDob" mode="date" value="{{alliance.allianceDob}}" end="{{nowDate}}" bindchange="pickerChange" data-layer="allianceDob" disabled="{{!isSelf}}">
+        <view class="picker">
+          {{ alliance.allianceDob ? alliance.allianceDob : (isSelf ? "请输入出生日期" : "") }}
+        </view>
+      </picker>
+    </view> -->
+    <view class="flex-row">
+      <view>年龄：</view>
+      <!-- <view style="padding-left: 10rpx;">{{alliance.age ? alliance.age: (isSelf ? "请输入年龄" : "")}}</view> -->
+      <input name="age" type="number" min="18" bindinput="bindinput" data-layer="age" value="{{alliance.age}}" placeholder="{{isSelf?'请输入年龄':'保密'}}" disabled="{{!isSelf}}"/>
+    </view>
+    <view class="flex-row">
+      <view>职业：</view>
+      <input name="allianceOccupation" type="text" bindinput="bindinput" data-layer="allianceOccupation" value="{{alliance.allianceOccupation}}" placeholder="{{isSelf?'请输入职业':'保密'}}" disabled="{{!isSelf}}"/>
+    </view>
+    <view class="flex-row">
+      <view>需求：</view>
+      <input name="allianceBusiness" type="text" bindinput="bindinput" data-layer="allianceBusiness" value="{{alliance.allianceBusiness}}" placeholder="{{isSelf?'请输入需求':'保密'}}" disabled="{{!isSelf}}"/>
+    </view>
+    <view class="flex-row">
+      <view>爱好：</view>
+      <input name="allianceHobby" type="text" bindinput="bindinput" data-layer="allianceHobby" value="{{alliance.allianceHobby}}" placeholder="{{isSelf?'请输入爱好':'保密'}}" disabled="{{!isSelf}}"/>
+    </view>
+    <view class="flex-row">
+      <view>地址：</view>
+      <input name="allianceAddress" type="text" bindinput="bindinput" data-layer="allianceAddress" value="{{alliance.allianceAddress}}" placeholder="{{isSelf?'请输入地址':'保密'}}" disabled="{{!isSelf}}" />
+    </view>
+    <block wx:if="{{isSelf}}">
+      <view class="switch-row" style="color: #e42c2f;" wx:if="{{alliance.alliancePhone}}" bindtap="openPage" data-url="../updatePhone?alliancePhone={{alliance.alliancePhone}}">
+        <van-icon class="iconfont icon-genghuan" />
+        <text style="margin-left: 20rpx;">更新账户绑定手机 ></text>
+      </view>
+      <view class="switch-row">
+        <switch name="allianceStatus" checked="{{alliance.allianceStatus}}" data-layer="allianceStatus" bindchange="changeSwitch" style="zoom: 0.7;"></switch>
+        <text style="margin-left: 20rpx;">是否公开个人信息资源对接</text>
+      </view>
+    </block>
+    <button class="main-bg sub-btn" form-type="submit" wx:if="{{isSelf}}">保存</button>
+  </form>
+</view>

@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/alliance/index",
+    "pages/index/index",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/myPage/myPage",
+    "pages/search/search",
+    "pages/logs/logs",
+    "pages/product/product",
+    "pages/details/details",
+    "pages/favorite/favorite",
+    "pages/address/address",
+    "pages/setAddress/setAddress",
+    "pages/order/order",
+    "pages/order/sub-order",
+    "pages/order/express",
+    "pages/order/order-details",
+    "pages/order/apply-back",
+    "pages/order/evaluate",
+    "pages/addOrder/addOrder",
+    "pages/register/index",
+    "pages/register/phone",
+    "pages/personal/index",
+    "pages/personal/team/index",
+    "pages/personal/team/holder",
+    "pages/personal/team/award",
+    "pages/friend/friend",
+    "pages/friend/order",
+    "pages/friend/add",
+    "pages/alliance/list",
+    "pages/personal/team/profile",
+    "pages/alliance/judge",
+    "pages/register/applied",
+    "pages/personal/amount/index",
+    "pages/personal/amount/cash-out/index",
+    "pages/personal/amount/cash-out/list",
+    "pages/personal/amount/recharge/index",
+    "pages/personal/amount/recharge/list",
+    "pages/personal/wallet",
+    "pages/personal/updatePhone"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#2d2e32",
+    "navigationBarTitleText": "十美创享之家",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#f13232",
+    "list": [
+      {
+        "pagePath": "pages/alliance/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-actived.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "商品",
+        "iconPath": "images/note.png",
+        "selectedIconPath": "images/note-actived.png"
+      },
+      {
+        "pagePath": "pages/alliance/list",
+        "text": "盟友",
+        "iconPath": "images/ally.png",
+        "selectedIconPath": "images/ally-actived.png"
+      },
+      {
+        "pagePath": "pages/personal/index",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-actived.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

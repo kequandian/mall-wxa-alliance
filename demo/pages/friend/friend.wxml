@@ -1,0 +1,54 @@
+<!--pages/friend/friend.wxml-->
+<view style="padding-bottom: 140rpx;">
+  <view wx:if="{{orderList.length}}">
+    <view class="item-friend" wx:for="{{orderList}}" wx:key="{{item.id}}">
+      <!-- <view clsss="flex-cell"> -->
+        <!-- <image class="user-avatar" src="{{item.avatar}}"></image> -->
+        <!-- <view class="user-nick">{{item.name}}</view> -->
+      <!-- </view> -->
+      <view class="flex-cell contact" catchtap="openPage" data-url="./add?id={{item.id}}" >
+        <view class="flex-row" style="padding: 20rpx;justify-content: space-between;">
+          <view>
+            <text>{{item.name}}</text>
+            <text style="padding-left: 40rpx;">{{item.contactPhone}}</text>
+          </view>
+          <view class="add-order" catchtap="selFriend" data-index="{{index}}" data-url="../category/category" data-open-type="switchTab">下单</view>
+        </view>
+				<view class="address" style="font-size: 28rpx;">{{ item.pcdProvince }} {{ item.pcdCity }} {{ item.pcdDistinct }} {{ item.address }}</view>
+      </view>
+      <view class='orders' wx:if="{{item.orders}}" >
+        <view class="flex-row order-head" >
+          <view>订单编号：{{item.order_number}}</view>
+          <view>{{item.created_date}}</view>
+        </view>
+        <view class="order-product">
+          <view class="flex-row product" wx:for="{{item.order_items}}" wx:for-item="pItem" wx:key="{{pItem.id}}">
+            <image class="cover" src="{{pItem.cover}}"></image>
+            <view class="flex-cell">
+              <view class="product-name">{{pItem.product_name}}</view>
+              <view class="main-color">¥ {{pItem.price}}</view>
+              <view>数量：{{pItem.quantity}}</view>
+            </view>
+          </view>
+          <view class="more">
+            <view style="padding: 10rpx 20rpx;">更多商品</view>
+          </view>
+          <view class="flex-row order-price" style="justify-content: flex-end;">
+            <view>共{{order.order_items.length}}件商品</view>
+            <view style="margin-left: 20rpx;">订单金额： <text class="main-color-2">¥ {{item.origin_price}}</text></view>
+          </view>
+          <view class="flex-row order-foot" style="">
+            <view class="btn" bindtap="openPage" data-url="./order?contact_phone={{item.phone}}">更多订单</view>
+            <view class="main-bg btn">复购</view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="main-bg btn">帮下一单</view> -->
+    </view>
+  </view>
+  <view class="no-data" wx:else >暂无数据</view>
+  <view class="foot-row">
+    <view class="main-bg add-btn" bindtap="openPage" data-url="./add">添加朋友</view>
+  </view>
+
+</view>

@@ -1,0 +1,97 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class="personal-header">
+		<view class="userinfo" wx:if="{{userProfile.uid}}">
+			<image class="userinfo-avatar" src="{{userProfile.avatar}}" background-size="cover"></image>
+			<text class="userinfo-nickname">{{userProfile.name}}</text>
+		</view>
+    <view class="userinfo" wx:else>
+			<image class="userinfo-avatar" src="../../images/default_avatar.png" background-size="cover"></image>
+			<text class="userinfo-nickname" bindtap="showUserPopup">未登录</text>
+		</view>
+		<view class="record">
+			<!-- <block wx:for="{{record}}"> -->
+
+				<!-- <view class="recordItem" bindtap="favorite">
+					<text class="text-link"> {{ favoriteArr.length }} </text>
+					<text class="text-link"> 我的收藏</text>
+				</view> -->
+				<view class="recordItem">
+					<text class="text-link"> 0 </text>
+					<text class="text-link">积分</text>
+				</view>
+				<view class="recordItem">
+					<text class="text-link"> 0 </text>
+					<text class="text-link">优惠券</text>
+				</view>
+			<!-- </block>  -->
+		</view>
+	</view>
+	<view class="myOrder" bindtap="order">
+		<text>我的订单</text>
+		<view class="all">
+			<text class="all-text">查看全部</text>
+			<image class="all-img" src="../../images/arrowright.png" ></image>
+		</view>
+	</view>
+
+	<!-- <view class="borderView">   </view> -->
+	
+	<view class="wait">
+		<block wx:for="{{waitArr}}">
+			<view class="waitItem" bindtap="order" data-status="{{item.status}}">
+				<image src="../../images/{{item.img}}"></image>
+				<text>{{item.title}}</text>
+			</view>
+		</block>
+	</view>
+	<!-- <view class="borderView">   </view> -->
+	<view class="myLists">
+		<view class="myView" bindtap="goAddress">
+			<image class="myViewImg" src="../../images/address.png"></image>
+			<text>我的地址</text>
+			<image class="myViewImg2" src="../../images/arrowright.png"></image>
+		</view>
+
+<!-- 		<view class="myView">
+			<image class="myViewImg" src="../../images/ticket.png"></image>
+			<text>优惠券</text>
+			<image class="myViewImg2" src="../../images/arrowright.png"></image>
+		</view> -->
+
+		<view class="myView">
+			<image class="myViewImg" src="../../images/feedback.png"></image>
+			<text>意见反馈</text>
+			<image class="myViewImg2" src="../../images/arrowright.png"></image>
+		</view>
+
+<!-- 		<view class="myView">
+			<image class="myViewImg" src="../../images/problem.png"></image>
+			<text>常见问题</text>
+			<image class="myViewImg2" src="../../images/arrowright.png"></image>
+		</view> -->
+	</view>
+
+
+
+
+	<!-- <view class="userinfo">
+		<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+	</view> -->
+<!-- 	<view class="usermotto">
+		<text class="user-motto">{{motto}}</text>
+	</view> -->
+</view>
+<van-dialog use-slot
+  title="您还未登录"
+  show="{{ showUserAuth }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:getuserinfo="getUserInfo">
+  <view style="padding: 20rpx; text-align: center; color: #666;">
+    需要登录才能体验完美
+  </view>
+</van-dialog>

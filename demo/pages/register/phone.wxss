@@ -1,0 +1,127 @@
+/**index.wxss**/
+page {
+  background: #eff0f1;
+}
+.container {
+  /* padding-top: 200rpx; */
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.user-nick {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.phone-input {
+  border-bottom: 1rpx solid #ccc;
+  padding-bottom: 10rpx;
+  text-align: center;
+  width: 80vw;
+  margin: 20rpx auto;
+}
+
+.phone-input-holder {
+  color: #ccc;
+}
+
+.flex-row {
+  background: #feffff;
+  width: 90%;
+  margin: 40rpx auto;
+  border-radius: 10rpx;
+  color: #666;
+}
+
+.flex-row .laber {
+  width: 150rpx;
+  padding-left: 20rpx;
+}
+.flex-row input {
+  flex: 1;
+  padding: 20rpx;
+}
+
+.code-btn {
+  padding: 20rpx;
+  background-color: #4faf70!important;
+  color: #fff!important;
+}
+
+.sub-btn {
+  width: 90%;
+  padding: 20rpx;
+  margin-top: 100rpx;
+}
+.button-hover {
+  opacity: 0.9;
+}
+
+
+.form {
+  margin-top: 20rpx;
+  height: 100%;
+  width: 100%;
+  color: #666;
+}
+
+.form-row {
+  display: flex;
+  background: #fff;
+  margin: 10rpx 20rpx;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+}
+.form .form-row:first-child {
+  margin-top: 30rpx;
+}
+.form-row input {
+  flex: 1;
+  text-indent: 10rpx;
+}
+.form-row picker {
+  flex: 1;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  margin: 30rpx 20rpx;
+  padding: 20rpx;
+}
+
+.sub-btn {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20rpx;
+}
+
+.code-row {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  margin: 10rpx 20rpx;
+  padding-left: 20rpx;
+  border-radius: 10rpx;
+  background: #feffff;
+}
+.code-row input {
+  flex: 1;
+  padding: 20rpx;
+}
+.code-row .code-btn {
+  margin-right: 0;
+}

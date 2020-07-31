@@ -1,0 +1,84 @@
+page {
+  background: #eff0f1;
+}
+.container {
+  /* padding-top: 200rpx; */
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.user-nick {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.phone-input {
+  border-bottom: 1rpx solid #ccc;
+  padding-bottom: 10rpx;
+  text-align: center;
+  width: 80vw;
+  margin: 20rpx auto;
+}
+
+.phone-input-holder {
+  color: #ccc;
+}
+
+.flex-row {
+  background: #feffff;
+  margin: 10rpx auto;
+  color: #666;
+}
+.flex-row .laber {
+  width: 150rpx;
+  padding-left: 20rpx;
+}
+.flex-row input {
+  flex: 1;
+  padding: 20rpx 20rpx 20rpx 40rpx;
+}
+.code-btn {
+  padding: 20rpx;
+  background-color: #4faf70!important;
+  color: #fff!important;
+}
+
+.sub-btn {
+  width: 90%;
+  padding: 20rpx;
+  margin-top: 100rpx;
+}
+.button-hover {
+  opacity: 0.9;
+}
+
+.foot-row {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 30;
+  padding-bottom: 20rpx;
+  background: #f0f0f0;
+}
+.add-btn {
+  /* bottom: 40rpx;
+  left: 40rpx;
+  right: 40rpx; */
+  margin: 0 30rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+}

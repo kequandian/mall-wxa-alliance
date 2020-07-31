@@ -1,0 +1,32 @@
+<!--address.wxml-->
+
+<view class="container padding-foot">
+	
+	<view class="addressArr">
+		
+		<view bindtap="setAddress" class="item-address" wx:for="{{ addressArr }}" data-index="{{index}}">
+			<!-- <icon class="icon" type="{{ selectIcon[index]?'success_circle':'circle' }}" size="20" background-color="red" catchtap="selectAddress" data-index="{{index}}" /> -->
+			<!-- <radio class="radio" catchtap="default"  data-index="{{index}}" checked="{{ item.is_default?true:false }}"></radio> -->
+			<view class="address-main">
+				<view class="user">
+					<view class="name">{{ item.contact_user }}</view>
+					<view class="phone">{{ item.phone }}</view>
+					<text class="default" wx:if="{{ item.is_default==1 }}">默认地址</text>
+
+				</view>
+				<view class="address-text">{{ item.province }} {{ item.city }} {{ item.district }} {{ item.detail }}</view>
+				
+			</view>
+			<view class="img">
+				<image class="arrowright" src="../../images/arrowright.png" ></image>	
+			</view>
+		</view>
+		
+	</view>
+
+  <view class="foot-row">
+    <view class="main-bg btn" bindtap="openPage" data-url="../setAddress/setAddress">添加地址</view>
+  </view>
+	<!-- <button class="main-bg add-Address" bindtap="addAddress">添加地址</button> -->
+	
+</view>
